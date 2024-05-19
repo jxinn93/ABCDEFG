@@ -24,9 +24,11 @@ public class ParentController extends ViewProfileController {
         @FXML
         public void viewProfileBTN(ActionEvent actionEvent) {
             try {
+                String nameSearch = nameSearchTF.getText();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewProfile.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 ViewProfileController viewProfileController = fxmlLoader.getController();
+
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
@@ -64,7 +66,7 @@ public class ParentController extends ViewProfileController {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewProfile.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
                     ViewProfileController viewProfileController = fxmlLoader.getController();
-                    viewProfileController.profile(nameSearch,email, coordinateX, coordinateY ,role); // Pass searched username to ViewProfileController
+                    viewProfileController.profile(nameSearch,email, coordinateX, coordinateY ,role, nameSearch);
                     Stage stage = new Stage();
                     stage.setScene(scene);
                     stage.show();

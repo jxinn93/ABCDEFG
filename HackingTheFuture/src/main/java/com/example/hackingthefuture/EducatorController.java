@@ -67,7 +67,7 @@ public class EducatorController extends ViewProfileController{
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewProfile.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 ViewProfileController viewProfileController = fxmlLoader.getController();
-                viewProfileController.profile(nameSearch,email, coordinateX, coordinateY ,role); // Pass searched username to ViewProfileController
+                viewProfileController.profile(nameSearch,email, coordinateX, coordinateY ,role, nameSearch); // Pass searched username to ViewProfileController
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();

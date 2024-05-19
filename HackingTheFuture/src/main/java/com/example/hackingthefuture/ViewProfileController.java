@@ -25,6 +25,8 @@ public class ViewProfileController {
 
     public Connection con;
     private List<FamilyMember> parentsList = ParentChild.parentsList;
+    private String nameSearch;
+
     @FXML
     public void initialize() {
         System.out.println("Initializing ViewProfileController...");
@@ -35,10 +37,13 @@ public class ViewProfileController {
         Double coordinateX = UserClass.getCoordinateX();
         Double coordinateY = UserClass.getCoordinateY();
         String role = UserClass.getRole();
-        profile(username, email, coordinateX, coordinateY, role);
+        String profileUsername = "";
+        profile(username, email, coordinateX, coordinateY, role, profileUsername);
     }
 
-    public void profile(String username, String email, Double coordinateX, Double coordinateY, String role) {
+
+
+    public void profile(String username, String email, Double coordinateX, Double coordinateY, String role, String profileUsername) {
 
         String SUrl = "jdbc:mysql://localhost:3306/hackingthefuture";
         String SUser = "root";
@@ -62,6 +67,7 @@ public class ViewProfileController {
 
             //set labels
             nameLabel.setText("Username: " + (username != null ? username : ""));
+
             emailLabel.setText("Email: " + (email != null ? email : ""));
 
             if (coordinateX != null && coordinateY != null) {
@@ -104,13 +110,12 @@ public class ViewProfileController {
                 case "Parent":
                     label2R.setVisible(false);
                     label3.setText("Booking history: ");
-
                     String loggedInUsername = UserClass.getUsername();
+                    String targetUsername = (profileUsername != null && !profileUsername.isEmpty()) ? profileUsername : loggedInUsername;
 
                     FamilyMember loggedInParent = null;
                     for (FamilyMember parent : parentsList){
-                        if(parent.getUsername().equals(loggedInUsername)){
-
+                        if(parent.getUsername().equals(targetUsername)){
                             loggedInParent = parent;
                             break;
                         }
@@ -148,18 +153,18 @@ public class ViewProfileController {
                     for (FamilyMember parent : parentsList) {
                         for(Child child : parent.getChildren()){
                             if(child.getUsername().equals(username)){
-                                if(showParent.length() > 0){
-                                    showParent.append(", ");
-                                }
-                                showParent.append(parent.getUsername());
+                                showParent.append(parent.getUsername()).append(", ");
+                                break;
                             }
                         }
                     }
+                    if(showParent.length() > 0){
+                        showParent.deleteCharAt(showParent.length() - 2);
+                    }
                     label2R.setVisible(true);
                     label2R.setText("Points: " + points);
-                    label3.setText("Parents: " + showParent.toString());
+                    label3.setText("Parents: " + (showParent.length()>0 ? showParent.toString(): "No Parents Found"));
                     label4.setText("Friends: ");
-                    // ...
                     break;
             }
         } catch (SQLException e) {
