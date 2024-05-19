@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fbe9e7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.ViewProfileController">
+   <children>
+      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#ff7043">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="450.0" fitWidth="800.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/viewProfileBackground.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="291.0" layoutY="91.0" prefHeight="58.0" prefWidth="247.0" text="View Profile" textFill="#ff7043">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0\HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png"/>
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="101.0" fitWidth="102.0" layoutX="350.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png"/>
+         </image>
+      </ImageView>
+      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="168.0" prefHeight="51.0" prefWidth="247.0" text="Name" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="roleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="239.0" prefHeight="51.0" prefWidth="270.0" style="-fx-border-color: #ffab91;" text="Role" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="428.0" layoutY="238.0" prefHeight="51.0" prefWidth="270.0" style="-fx-border-color: #ffab91;" text="Email" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="coordinateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="310.0" prefHeight="51.0" prefWidth="270.0" style="-fx-border-color: #ffab91;" text="Coordinate" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="label4" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="460.0" prefHeight="78.0" prefWidth="622.0" style="-fx-border-color: #ffab91;" text="label4" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="label2R" alignment="CENTER" contentDisplay="CENTER" layoutX="428.0" layoutY="309.0" prefHeight="51.0" prefWidth="270.0" style="-fx-border-color: #ffab91;" text="label2R" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3" alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="371.0" prefHeight="78.0" prefWidth="622.0" style="-fx-border-color: #ffab91;" text="label3" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

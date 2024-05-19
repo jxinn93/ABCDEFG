@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.CreateEventController">
+   <children>
+      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="169.0" fitWidth="190.0" layoutX="-13.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" rotate="-25.8">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/createEventPage.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="720.0" fitWidth="722.0" layoutX="59.0" layoutY="-68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/createEventBackground.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="eventTitleTF" layoutX="214.0" layoutY="192.0" prefHeight="38.0" prefWidth="412.0" promptText="Event Tittle">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="eventDescriptionTF" layoutX="213.0" layoutY="254.0" prefHeight="38.0" prefWidth="412.0" promptText="Event Description">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="eventVenueTF" layoutX="213.0" layoutY="320.0" prefHeight="38.0" prefWidth="412.0" promptText="Event Venue">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="startTimeTF" layoutX="214.0" layoutY="442.0" prefHeight="38.0" prefWidth="193.0" promptText="Start Time (E.g. 08:00)">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="eventDateTF" layoutX="213.0" layoutY="382.0" prefHeight="38.0" prefWidth="412.0" promptText="Event Date" />
+      <Label layoutX="294.0" layoutY="40.0" prefHeight="58.0" prefWidth="247.0" text="Create Event" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #e0f2f1;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="671.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="106.0" prefWidth="124.0" style="-fx-background-color: #e0f2f1;">
+         <graphic>
+            <ImageView fitHeight="101.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="709.0" layoutY="99.0" text="Profile" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button layoutX="377.0" layoutY="535.0" mnemonicParsing="false" onAction="#saveBTN" prefHeight="50.0" prefWidth="102.0" style="-fx-background-color: #b2dfdb;" text="Save" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="endTimeTF" layoutX="428.0" layoutY="442.0" prefHeight="38.0" prefWidth="193.0" promptText="End Time (E.g. 13:00)">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fbe9e7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.ViewEventController">
+   <children>
+      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#ff7043">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="520.0" fitWidth="438.0" layoutX="186.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/viewEventBackground.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="300.0" layoutY="24.0" prefHeight="58.0" prefWidth="247.0" text="View Event" textFill="#ff7043">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="671.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="106.0" prefWidth="124.0" style="-fx-background-color: #fbe9e7;">
+         <graphic>
+            <ImageView fitHeight="101.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label layoutX="709.0" layoutY="99.0" text="Profile" textFill="#ff7043">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="174.0" fitWidth="193.0" layoutX="626.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true" rotate="1.3">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/viewEventPage.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="eventTF1" alignment="TOP_CENTER" layoutX="262.0" layoutY="183.0" prefHeight="101.0" prefWidth="310.0" style="-fx-border-color: #ffab91;" text="Event 1">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="eventTF2" alignment="TOP_CENTER" layoutX="262.0" layoutY="295.0" prefHeight="102.0" prefWidth="310.0" style="-fx-border-color: #ffab91;" text="Event 2">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="eventTF3" alignment="TOP_CENTER" layoutX="262.0" layoutY="411.0" prefHeight="101.0" prefWidth="310.0" style="-fx-border-color: #ffab91;" text="Event 3">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="registerBTN1" layoutX="683.0" layoutY="183.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="registerBTN2" layoutX="683.0" layoutY="295.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="registerBTN3" layoutX="683.0" layoutY="411.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="163.0" fitWidth="247.0" layoutX="-20.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true" rotate="-2.7">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/viewEventPage(1).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

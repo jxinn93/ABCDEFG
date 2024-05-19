@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.EducatorController">
+   <children>
+      <Button layoutX="668.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="105.0" prefWidth="132.0" style="-fx-background-color: #e0f2f1;">
+         <graphic>
+            <ImageView fitHeight="101.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="713.0" layoutY="99.0" text="Profile" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameSearchTF" alignment="TOP_CENTER" layoutX="210.0" layoutY="139.0" prefHeight="46.0" prefWidth="404.0" promptText="Search user">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#logoutBTN" prefHeight="60.0" prefWidth="47.0" style="-fx-background-color: #e0f2f1;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png"/>
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="33.0" layoutY="99.0" text="Log Out" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="401.0" fitWidth="214.0" layoutX="-8.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/educator-removebg-preview.png"/>
+         </image>
+      </ImageView>
+      <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="436.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="name" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Button layoutX="635.0" layoutY="140.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="29.0" prefWidth="36.0" style="-fx-background-color: #b2dfdb;">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/searchIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="215.0" layoutY="226.0" mnemonicParsing="false" onAction="#createEventBTN" prefHeight="83.0" prefWidth="82.0" style="-fx-background-color: #b2dfdb;" text="Create Event" textAlignment="CENTER" textFill="#4db6ac">
+         <graphic>
+            <ImageView fitHeight="167.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/createEventIcon.png"/>
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="483.0" layoutY="226.0" mnemonicParsing="false" onAction="#createQuizBTN" prefHeight="157.0" prefWidth="204.0" style="-fx-background-color: #b2dfdb;" text="Create Quiz" textAlignment="CENTER" textFill="#4db6ac">
+         <graphic>
+            <ImageView fitHeight="125.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/quizizzIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="350.0" layoutY="416.0" mnemonicParsing="false" onAction="#viewEventBTN" prefHeight="142.0" prefWidth="204.0" style="-fx-background-color: #b2dfdb;" text="View Event" textAlignment="CENTER" textFill="#4db6ac">
+         <graphic>
+            <ImageView fitHeight="125.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/viewEventIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
