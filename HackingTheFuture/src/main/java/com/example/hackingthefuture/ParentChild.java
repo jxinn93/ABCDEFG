@@ -19,9 +19,17 @@ public class ParentChild {
                 String childName = parts[1].trim();
 
                 FamilyMember parent = findOrCreate(parentsList, parentName);
-                Child child = new Child(childName, parent);
-                parent.addChild(child);
-
+                boolean childExists = false;
+                 for (Child child: parent.getChildren()){
+                     if(child.getUsername().equals(childName)){
+                         childExists = true;
+                         break;
+                     }
+                 }
+                 if(!childExists) {
+                     Child child = new Child(childName, parent);
+                     parent.addChild(child);
+                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
