@@ -10,7 +10,11 @@ public class PassData {
     private double yCoordinate;
     private String code;
     private int resend;
-    private PassData(){}
+    private boolean emailVerified;
+
+    private PassData(){
+        this.emailVerified = false;
+    }
 
     public static PassData getInstance(){
         return instance;
@@ -80,6 +84,13 @@ public class PassData {
         this.resend = resend;
     }
 
+    public boolean isEmailVerified(){
+        return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified){
+        this.emailVerified = emailVerified;
+    }
     public void clearAllValues() {
         username = null;
         email = null;
@@ -87,5 +98,8 @@ public class PassData {
         role = null;
         code = null;
         resend = 0;
+        emailVerified = false;
     }
+
+
 }

@@ -7,8 +7,8 @@ import java.util.Properties;
 
 public class JavaMail {
     public static void sendmail(String recipient,String code,String title) throws MessagingException {
-        String username = "jojochaw731@gmail.com";
-        final String password = "1024YH_jo99%";
+        String username = "laujiaxin0218@gmail.com";
+        final String password = "yllh hpfq veei ysda";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

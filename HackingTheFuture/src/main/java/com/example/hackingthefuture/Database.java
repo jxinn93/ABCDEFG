@@ -6,16 +6,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
-    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/";
+    public static final String JDBC_URL = "jdbc:mysql://localhost:3306/hackingthefuture";
     public static final String USER = "root";
     public static final String PASSWORD = "";
 
     public static Connection getConnection() throws SQLException {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/hackingthefuture";
-        String username = "root";
-        String password = "";
-        return DriverManager.getConnection(jdbcUrl, username, password);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("MySQL Driver not found", e);
+        }
     }
+
 
     public static Connection getConnection(String jdbcUrl) throws SQLException {
         String username = "root";

@@ -9,40 +9,47 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.Verify">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.Verify">
    <children>
-      <HBox prefHeight="400.0" prefWidth="600.0">
+      <HBox prefHeight="600.0" prefWidth="800.0">
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: #bbc6e6;">
+            <AnchorPane prefHeight="467.0" prefWidth="326.0" style="-fx-background-color: #bbc6e6;">
                <children>
-                  <ImageView fitHeight="249.0" fitWidth="250.0" layoutX="-0.8" layoutY="76.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
+                  <ImageView fitHeight="249.0" fitWidth="250.0" layoutX="14.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="156.0">
                      <image>
                         <Image url="@login%20logo.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: ffffff;">
+            <AnchorPane prefHeight="600.0" prefWidth="475.0" style="-fx-background-color: ffffff;">
                <children>
-                  <TextField fx:id="tf_vcode" layoutX="49.0" layoutY="187.0" prefHeight="26.0" prefWidth="250.0" promptText="Enter Verification Code" />
-                  <Label layoutX="49.0" layoutY="78.0" text="Verification Code" textFill="#48478c">
+                  <TextField fx:id="tf_vcode" layoutX="75.0" layoutY="313.0" prefHeight="26.0" prefWidth="250.0" promptText="Enter Verification Code" />
+                  <Label layoutX="86.0" layoutY="66.0" text="Verification Code" textFill="#48478c">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <Button fx:id="button_signup" layoutX="127.0" layoutY="283.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Back to Signup" textFill="#48478c" />
-                  <Button fx:id="button_verify" layoutX="49.0" layoutY="241.0" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="VERIFY" textFill="WHITE" />
-                  <Label layoutX="49.0" layoutY="124.0" text="We have sent a verification code">
+                  <Button fx:id="button_signup" layoutX="304.0" layoutY="459.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Back to Signup" textFill="#48478c" />
+                  <Button fx:id="button_verify" layoutX="75.0" layoutY="357.0" mnemonicParsing="false" onAction="#submit" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="VERIFY" textFill="WHITE" />
+                  <Label fx:id="message" layoutX="76.0" layoutY="250.0" prefHeight="21.0" prefWidth="274.0" text="Click &quot;Get&quot; to get the verification code">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="49.0" layoutY="146.0" text="to your email.">
+                  <Label layoutX="75.0" layoutY="279.0" text="in your email.">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
+                  <Button fx:id="Resend" layoutX="75.0" layoutY="459.0" mnemonicParsing="false" onAction="#resend" style="-fx-background-color: #48478c;" text="Resend" textFill="WHITE" />
+                  <Label fx:id="email" layoutX="76.0" layoutY="146.0" text="Email: ">
+                       <font>
+                          <Font size="15.0" />
+                       </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="423.0" prefHeight="21.0" prefWidth="166.0" text="Didn't received it?" />
+                  <Button fx:id="Get" layoutX="363.0" layoutY="191.0" mnemonicParsing="false" onAction="#Get" style="-fx-background-color: #48478c;" text="Get" textFill="WHITE" />
                </children>
             </AnchorPane>
          </children>

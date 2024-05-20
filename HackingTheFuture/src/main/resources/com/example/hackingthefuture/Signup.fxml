@@ -11,32 +11,36 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.SignupController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.SignupController">
     <children>
         <AnchorPane prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: #bbc6e6;">
             <children>
-                <ImageView fitHeight="249.0" fitWidth="250.0" layoutX="-0.8" layoutY="76.8" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
+                <ImageView fitHeight="249.0" fitWidth="250.0" layoutX="29.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="204.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="-29.0" AnchorPane.topAnchor="147.0">
                     <image>
                         <Image url="@login%20logo.png" />
                     </image></ImageView>
             </children>
         </AnchorPane>
-        <AnchorPane prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: ffffff;">
+        <AnchorPane prefHeight="600.0" prefWidth="577.0" style="-fx-background-color: ffffff;">
             <children>
-                <TextField fx:id="tf_email" layoutX="50.0" layoutY="106.0" prefHeight="26.0" prefWidth="250.0" promptText="Email Address" />
-                <TextField fx:id="tf_username" layoutX="50.0" layoutY="139.0" prefHeight="26.0" prefWidth="250.0" promptText="Username" />
-                <Button fx:id="button_login" layoutX="153.0" layoutY="312.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Log in" textFill="#48478c" />
-                <Label layoutX="50.0" layoutY="316.0" text="Already a member?" textFill="GREY" />
-                <Label layoutX="89.0" layoutY="49.0" text="User Sign Up" textFill="#48478c">
+                <TextField fx:id="tf_email" layoutX="136.0" layoutY="124.0" prefHeight="26.0" prefWidth="250.0" promptText="Email Address" />
+                <TextField fx:id="tf_username" layoutX="136.0" layoutY="173.0" prefHeight="26.0" prefWidth="250.0" promptText="Username" />
+                <Button fx:id="button_login" layoutX="356.0" layoutY="497.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Log in" textFill="#48478c" />
+                <Label layoutX="136.0" layoutY="502.0" text="Already a member?" textFill="GREY" />
+                <Label layoutX="175.0" layoutY="55.0" text="User Sign Up" textFill="#48478c">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Label>
-            <ChoiceBox fx:id="cb_role" accessibleRole="CHECK_BOX" layoutX="147.0" layoutY="246.0" prefWidth="150.0" />
-            <Label layoutX="50.0" layoutY="250.0" text="Select your role!" />
-            <PasswordField fx:id="pf_password" layoutX="50.0" layoutY="173.0" prefHeight="26.0" prefWidth="250.0" promptText="Password" />
-            <Button fx:id="button_signup" layoutX="50.0" layoutY="285.0" mnemonicParsing="false" onAction="#signup" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="SIGNUP" textFill="WHITE" />
-            <PasswordField fx:id="pf_cpassword" layoutX="50.0" layoutY="208.0" prefHeight="26.0" prefWidth="250.0" promptText="Confirm Password" />
-            </children></AnchorPane>
+            <ChoiceBox fx:id="cb_role" accessibleRole="CHECK_BOX" layoutX="281.0" layoutY="326.0" prefWidth="150.0" />
+            <Label layoutX="136.0" layoutY="331.0" text="Select your role!" />
+            <PasswordField fx:id="pf_password" layoutX="136.0" layoutY="221.0" prefHeight="26.0" prefWidth="250.0" promptText="Password" />
+            <Button fx:id="button_signup" layoutX="138.0" layoutY="448.0" mnemonicParsing="false" onAction="#signup" prefHeight="26.0" prefWidth="275.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="SIGNUP" textFill="WHITE" />
+            <PasswordField fx:id="pf_cpassword" layoutX="136.0" layoutY="269.0" prefHeight="26.0" prefWidth="250.0" promptText="Confirm Password" />
+            <Button fx:id="buttonVerify" layoutX="138.0" layoutY="402.0" mnemonicParsing="false" onAction="#verifyEmail" prefHeight="26.0" prefWidth="275.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="GET  VERIFICATION CODE" textFill="WHITE" />
+            <Label layoutX="138.0" layoutY="369.0" prefHeight="21.0" prefWidth="201.0" text="Verify Your Email here" />
+            </children>
+        </AnchorPane>
+
     </children>
 </HBox>

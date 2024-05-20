@@ -2,17 +2,19 @@ package com.example.hackingthefuture;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Verify implements Initializable {
+public class Verify implements Initializable  {
     @FXML
     private Button button_verify;
     @FXML
@@ -21,14 +23,26 @@ public class Verify implements Initializable {
     private Label email;
     @FXML
     private TextField tf_vcode;
+    private String emailText;
 
     PassData data = PassData.getInstance();
+    public Verify(){}
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // Use receivedData in the initialize method
-        email.setText(data.getEmail());
+    public Verify (String email){
+        this.emailText = email;
     }
+        public String getEmail(){
+            return email.getText();
+        }
+        private void setEmailLabel(){
+        email.setText("Email: " + data.getEmail());
+        }
+    public void initialize(URL location, ResourceBundle resources) {
+        setEmailLabel();
+    }
+
+
+
 
     @FXML
     void resend(ActionEvent event) throws MessagingException {
@@ -40,7 +54,7 @@ public class Verify implements Initializable {
     }
 
     @FXML
-    void verify(ActionEvent event) {
+    void submit(ActionEvent event) {
         String code = tf_vcode.getText();
         int resend = data.getResend();
 
@@ -50,6 +64,7 @@ public class Verify implements Initializable {
             }else{
                 Object[] objects = {data.getUsername(), data.getPassword(), data.getEmail(), data.getRole(), data.getxCoordinate(), data.getyCoordinate()};
                 String sql = "INSERT INTO user (username, password, email, role, coordinateX, coordinateY) VALUES (?, ?, ?, ?, ?, ?)";
+                data.setEmailVerified(true);
 
                 Node sourceNode = (Node) event.getSource();
                 if(Function.insert(sql,objects)){
@@ -76,4 +91,35 @@ public class Verify implements Initializable {
         }
 
     }
+
+    public void back(ActionEvent actionEvent) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Signup.fxml"));
+                Scene scene = null;
+                try {
+                    scene = new Scene(fxmlLoader.load());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                SignupController signupController = fxmlLoader.getController();
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
+                Stage currentStage = (Stage) tf_vcode.getScene().getWindow();
+                currentStage.close();
+            }
+
+    public void Get(ActionEvent event) throws MessagingException {
+        String code = Function.generateRandomNumber();
+        data.setCode(code);
+        data.setResend(3);
+        JavaMail.sendmail(data.getEmail(), "The Verify code is : " + code,"Verify Email");
+        Function.inform("Resend code",null,"Verify Code Successfully.");
+    }
+
+
+
+
 }
+
+
+

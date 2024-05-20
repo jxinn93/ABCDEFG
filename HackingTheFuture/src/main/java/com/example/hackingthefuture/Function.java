@@ -59,7 +59,7 @@ public class Function {
             LoginDetail login = LoginDetail.getInstance();
             boolean data = login.getLogin();
             if(data){
-                connection = Database.getConnection("jdbc:mysql://localhost:3306/"+login.getUsername());
+                connection = Database.getConnection("jdbc:mysql://localhost:3306/hackingthefuture");
             }else{
                 connection = Database.getConnection();
             }
@@ -86,7 +86,7 @@ public class Function {
             LoginDetail login = LoginDetail.getInstance();
             boolean data = login.getLogin();
             if(data){
-                connection = Database.getConnection("jdbc:mysql://localhost:3306/"+login.getUsername());
+                connection = Database.getConnection("jdbc:mysql://localhost:3306/hackingthefuture");
             }else{
                 connection = Database.getConnection();
             }
@@ -184,7 +184,7 @@ public class Function {
             LoginDetail login = LoginDetail.getInstance();
             boolean data = login.getLogin();
             if(data){
-                connection = Database.getConnection("jdbc:mysql://localhost:3306/"+login.getUsername());
+                connection = Database.getConnection("jdbc:mysql://localhost:3306/hackingthefuture");
             }else{
                 connection = Database.getConnection();
             }
@@ -192,7 +192,12 @@ public class Function {
             int i = 1;
             for (Object element : arr) {
                 if (element instanceof Number) {
-                    preparedStatement.setInt(i, (Integer) element);
+                    if (element instanceof Integer) {
+                        preparedStatement.setInt(i, (Integer) element);
+                    } else if (element instanceof Double) {
+                        preparedStatement.setDouble(i, (Double) element);
+                    } else {
+                    }
                 } else {
                     preparedStatement.setString(i, (String) element);
                 }
@@ -277,77 +282,55 @@ public class Function {
         alert.showAndWait();
     }
 
-    public static boolean username(String username){
-        boolean check = true;
-        try (Connection connection = Database.getConnection()) {
-            if (connection != null) {
-                System.out.println("Connected");
-                String selectQuery = "SELECT * FROM user WHERE username='" + username + "'";
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectQuery);
+    public static boolean usernameExists(String username) throws SQLException {
+        String query = "SELECT COUNT(*) FROM user WHERE username = ?";
+        try (Connection connection = Database.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    check = true;
-                } else {
-
-                    check = false;
+                    return resultSet.getInt(1) > 0;
                 }
-                resultSet.close();
-                statement.close();
-
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            check = false;
         }
-        return check;
+        return false;
     }
 
-    public static boolean isUpdatedUsername(String username,String current_username){
+    public static boolean isUpdatedUsername(String username,String current_username) throws SQLException {
         boolean check = true;
 
         if(username.equals(current_username)){
             warning("Username same with current username",null,"Please use another username");
             check = true;
         }else{
-            check = username(username);
+            check = usernameExists(username);
         }
 
         return check;
     }
 
-    public static boolean email(String email){
-        boolean check = true;
-        try (Connection connection = Database.getConnection()) {
-            if (connection != null) {
-                System.out.println("Connected");
-                String selectQuery = "SELECT * FROM user WHERE email='" + email + "'";
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectQuery);
+    public static boolean emailExists(String email) throws SQLException {
+        String query = "SELECT COUNT(*) FROM user WHERE email = ?";
+        try (Connection connection = Database.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    check = true;
-                } else {
-
-                    check = false;
+                    return resultSet.getInt(1) > 0;
                 }
-                resultSet.close();
-                statement.close();
-
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            check = false;
         }
-        return check;
+        return false;
     }
 
-    public static boolean isUpdatedEmail(String email,String current_email){
+    public static boolean isUpdatedEmail(String email,String current_email) throws SQLException {
         boolean check = true;
 
         if(email.equals(current_email)){
             warning("Email same with current Email",null,"Please use another Email");
             check = true;
         }else{
-            check = username(email);
+            check = emailExists(email);
         }
 
         return check;
@@ -513,4 +496,6 @@ public class Function {
                 return false;
         }
     }
+
+
 }
