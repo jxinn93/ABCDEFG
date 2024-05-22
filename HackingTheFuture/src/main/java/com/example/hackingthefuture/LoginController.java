@@ -40,48 +40,39 @@ public class LoginController {
     private Scene scene;
 
     @FXML
-    void login(ActionEvent event) throws IOException, MessagingException {
+    void login(ActionEvent event) throws IOException, MessagingException, SQLException {
         String usernameOrEmail = tf_username.getText();
         String password = pf_password.getText();
 
-        if(usernameOrEmail.isEmpty() || password.isEmpty()){
-            Function.warning("Login Error",null,"Please fill in the username/email and password.");
-        }else{
-
+        if (usernameOrEmail.isEmpty() || password.isEmpty()) {
+            Function.warning("Login Error", null, "Please fill in the username/email and password.");
+        } else {
             String sqlQuery = "SELECT * FROM user WHERE username='"+usernameOrEmail+"' OR email='" + usernameOrEmail +"' AND password='"+Function.hashPassword(password)+"'";
-
             try (Connection con = Function.getConnection();
                  PreparedStatement preparedStatement = con.prepareStatement(sqlQuery)) {
+
 
                 ResultSet resultSet = Function.getData(sqlQuery);
 
                 if(resultSet.next()){
-//                    String code = Function.generateRandomNumber();
-//                    PassData data = PassData.getInstance();
-//                    data.setCode(code);
-//                    data.setResend(3);
                     String hashedPasswordDB = resultSet.getString("password");
                     String hashedPasswordEntered = Function.hashPassword(password);
 
                     if (hashedPasswordEntered != null && hashedPasswordEntered.equals(hashedPasswordDB)) {
-                    UserClass.setUsername(resultSet.getString("username"));
-                    UserClass.setEmail(resultSet.getString("email"));
-                    UserClass.setPassword(Function.hashPassword(password));
-                    UserClass.setRole(resultSet.getString("role"));
-                    UserClass.setCoordinateX(resultSet.getDouble("coordinateX"));
-                    UserClass.setCoordinateY(resultSet.getDouble("coordinateY"));
+                        UserClass.setUsername(resultSet.getString("username"));
+                        UserClass.setEmail(resultSet.getString("email"));
+                        UserClass.setPassword(Function.hashPassword(password));
+                        UserClass.setRole(resultSet.getString("role"));
+                        UserClass.setCoordinateX(resultSet.getDouble("coordinateX"));
+                        UserClass.setCoordinateY(resultSet.getDouble("coordinateY"));
 
-
-//                    JavaMail.sendmail(resultSet.getString("email"),"The login verification code is : " + code,"Login Verification");
-                    String roleDB = resultSet.getString("role");
-                    Function.inform("Login Successful",null,"Succesfully logged in!");
-//                    Node sourceNode = (Node) event.getSource();
-//                    Function.nextPage("LoginVerify.fxml",sourceNode,"Login Verification");
-                     openHomePage(roleDB);
-                }else{
-                    Function.inform("Login Error",null,"Incorrect username/email and password.");
-                }
-                }else{
+                        String roleDB = resultSet.getString("role");
+                        Function.inform("Login Successful",null,"Successfully logged in!");
+                        openHomePage(roleDB);
+                    } else {
+                        Function.inform("Login Error",null,"Incorrect username/email and password.");
+                    }
+                } else {
                     Function.inform("Login Error",null,"User not found.");
                 }
             } catch (SQLException e) {
@@ -89,6 +80,7 @@ public class LoginController {
             }
         }
     }
+
 
     public void openHomePage(String roleDB) throws IOException {
         if (roleDB.equals("Educator")) {
@@ -145,9 +137,9 @@ public class LoginController {
                 System.out.println(e.getMessage());
             }
 
-            // ...
         }
     }
+
 
     @FXML
     public void sign(ActionEvent event) throws IOException {

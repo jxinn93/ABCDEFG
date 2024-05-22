@@ -17,14 +17,29 @@ public class ForgotPasswordVerify {
     @FXML
     private Button button_forgotpw;
     @FXML
-    private Label email;
-    PassData data = PassData.getInstance();
+    private Label emailLabel;
+
+
     @FXML
     private TextField tf_vcode;
+    private String emailText;
+    PassData data = PassData.getInstance();
+    public ForgotPasswordVerify() {}
 
+    public ForgotPasswordVerify(String emailEntered) {
+        this.emailText = emailEntered;
+    }
+    public String getEmailEntered(){
+        return emailLabel.getText();
+    }
+
+    private void setEmailLabel(){
+        emailLabel.setText("Email: " + data.getEmailEntered());
+        System.out.println(emailLabel.getText());
+    }
     public void initialize(URL location, ResourceBundle resources) {
         // Use receivedData in the initialize method
-        email.setText(data.getEmail());
+        setEmailLabel();
     }
 
     @FXML
@@ -41,31 +56,23 @@ public class ForgotPasswordVerify {
         String email= data.getEmail();
         String code = tf_vcode.getText();
         int resend = data.getResend();
+        int send = data.getSend();
 
         if(data.getCode().equals(code)) {
-            if(data.getResend() == 0) {
+            Node sourceNode = (Node) event.getSource();
+            Function.nextPage("ResetPassword.fxml",sourceNode,"Reset");
+            if(data.getSend() == 1) {
+                Function.success("Successfully",null,"Please enter the new password.");
+            } else if (data.getResend() ==0) {
                 Function.warning("Attempt finished",null,"Please resend the verify code.");
+
             } else {
-                String updateQuery = "UPDATE user SET password = ? WHERE email='"+email+"'";
-                String name = Function.generateRandomString();
-                String password = Function.hashPassword(name);
 
-                Object[] objects = {password};
-
-                Node sourceNode = (Node) event.getSource();
-                if(Function.update(updateQuery,objects)) {
-                    Function.success("Successfully",null,"Successfully send Username and New Password to you email.");
-
-                    JavaMail.sendmail(email,"Username : " + data.getUsername() + "\nPassword : "+name,"Username and Password!");
-                    String username = data.getUsername();
                     PassData.getInstance().clearAllValues();
-                    Function.nextPage("Login.fxml",sourceNode,"Login");
-                } else {
-                    PassData.getInstance().clearAllValues();
-                    Function.warning("Unsuccessfully",null,"Unsuccessfully send the Username and New Password.");
+                    Function.warning("Unsuccessfully",null,"Unsuccessfully Set the New Password.");
                     Function.nextPage("login.fxml",sourceNode,"Login");
                 }
-            }
+
         } else {
             if(resend == 0){
                 Function.warning("Attempt finished",null,"Please resend the verify code.");
@@ -75,5 +82,19 @@ public class ForgotPasswordVerify {
                 Function.inform("Attempt Left",null,"Attempt left : "+data.getResend());
             }
         }
+    }
+
+    public void back(ActionEvent event) {
+        Node sourceNode = (Node) event.getSource();
+        Function.nextPage("ForgotPassword.fxml",sourceNode,"ForgotPassword");
+    }
+
+
+    public void Get(ActionEvent event) throws MessagingException {
+        String code = Function.generateRandomNumber();
+        data.setCode(code);
+        data.setSend(1);
+        JavaMail.sendmail(data.getEmail(), "The Verify code is : " + code,"Verify Email");
+        Function.inform("Resend code",null,"Verify Code Successfully.");
     }
 }

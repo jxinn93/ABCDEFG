@@ -26,7 +26,11 @@ public class ForgotPasswordController {
 
     @FXML
     void submit(ActionEvent event) throws MessagingException {
+        PassData data = PassData.getInstance();
         String email = tf_email.getText();
+        data.setEmailEntered(email);
+        ForgotPasswordVerify a = new ForgotPasswordVerify();
+        
         if (email.isEmpty()) {
             Function.warning("Error",null,"Please fill in the email address field.");
         }
@@ -34,27 +38,20 @@ public class ForgotPasswordController {
             Function.warning("Invalid Email",null,"Email address is invalid.");
         }else{
             String sqlQuery = "SELECT * FROM user WHERE email='"+email+"'";
-            ResultSet resultSet = Function.getData(sqlQuery);
-            // Process the ResultSet as needed
-            try {
-                if(resultSet.next()){
-//                    String code = Function.generateRandomNumber();
-//                    PassData data = PassData.getInstance();
-//                    data.setUsername(resultSet.getString("username"));
-//                    data.setEmail(email);
-//                    data.setCode(code);
-//                    data.setResend(3);
-//                    JavaMail.sendmail(resultSet.getString("email"),"Verify Code : " + code,"Reset Password");
-                    PassData data = PassData.getInstance();
+            String[] params = { email };
+
+            try (ResultSet resultSet = Function.getData(sqlQuery)) {
+                if (resultSet.next()) {
                     data.setEmail(email);
                     Node sourceNode = (Node) event.getSource();
-                    Function.nextPage("ResetPassword.fxml",sourceNode,"Verify");
-                }else{
-                    Function.inform("Email Error",null,"Your email hasn't been sign up.");
+                    Function.nextPage("ForgotPasswordVerify.fxml", sourceNode, "Email Verification");
+                } else {
+                    Function.inform("Email Error", null, "Your email hasn't been signed up.");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
     }
-}
+    }
+

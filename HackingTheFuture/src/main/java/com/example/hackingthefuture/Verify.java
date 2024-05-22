@@ -62,8 +62,8 @@ public class Verify implements Initializable  {
             if(data.getResend() == 0){
                 Function.warning("Attempt finished",null,"Please resend the verify code.");
             }else{
-                Object[] objects = {data.getUsername(), data.getPassword(), data.getEmail(), data.getRole(), data.getxCoordinate(), data.getyCoordinate()};
-                String sql = "INSERT INTO user (username, password, email, role, coordinateX, coordinateY) VALUES (?, ?, ?, ?, ?, ?)";
+                Object[] objects = {data.getUsername(), data.getPassword(), data.getEmail(), data.getRole(), data.getxCoordinate(), data.getyCoordinate(), data.getPoints()};
+                String sql = "INSERT INTO user (username, password, email, role, coordinateX, coordinateY, points) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 data.setEmailVerified(true);
 
                 Node sourceNode = (Node) event.getSource();

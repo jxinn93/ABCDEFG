@@ -10,10 +10,15 @@ public class PassData {
     private double yCoordinate;
     private String code;
     private int resend;
+    private int points;
     private boolean emailVerified;
+    private String emailEntered;
+    private int send;
+
 
     private PassData(){
         this.emailVerified = false;
+        this.emailEntered = emailEntered;
     }
 
     public static PassData getInstance(){
@@ -83,6 +88,12 @@ public class PassData {
     public void setResend(int resend){
         this.resend = resend;
     }
+    public int getPoints(){
+        return points;
+    }
+    public void setPoints(int points){
+        this.points = points;
+    }
 
     public boolean isEmailVerified(){
         return emailVerified;
@@ -90,6 +101,18 @@ public class PassData {
 
     public void setEmailVerified(boolean emailVerified){
         this.emailVerified = emailVerified;
+    }
+    public String getEmailEntered(){
+        return emailEntered;
+    }
+    public void setEmailEntered(String emailEntered){
+        this.emailEntered = emailEntered;
+    }
+    public int getSend(){
+        return send;
+    }
+    public void setSend(int send){
+        this.send = send;
     }
     public void clearAllValues() {
         username = null;
@@ -99,6 +122,7 @@ public class PassData {
         code = null;
         resend = 0;
         emailVerified = false;
+        send = 0;
     }
 
 

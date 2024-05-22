@@ -7,8 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ResetPasswordController {
     @FXML
@@ -19,11 +18,14 @@ public class ResetPasswordController {
     private PasswordField pf_newpw;
     @FXML
     private PasswordField pf_cpassword;
+    private String SUrl = "jdbc:mysql://localhost:3306/hackingthefuture";
+    private String SUser = "root";
+    private String SPass = "";
 
     @FXML
     void back(ActionEvent event) {
         Node sourceNode = (Node) event.getSource();
-        Function.nextPage("Login.fxml",sourceNode,"Login");
+        Function.nextPage("Login.fxml", sourceNode, "Login");
     }
 
     @FXML
@@ -37,7 +39,7 @@ public class ResetPasswordController {
             return;
         }
 
-        if (!Function.isMatchPassword(newPassword, confirmPassword)) {
+        if (!newPassword.equals(confirmPassword)) {
             Function.warning("Error", "Password Reset Failed", "Passwords do not match.");
             return;
         }
@@ -45,32 +47,26 @@ public class ResetPasswordController {
         // Update password in the database
         PassData data = PassData.getInstance();
         String email = data.getEmail();
-        String updateQuery = "UPDATE user SET password = ? WHERE email=?";
         String hashedPassword = Function.hashPassword(newPassword);
-        Object[] params = {hashedPassword, email};
+        String updateQuery = "UPDATE user SET password = ? WHERE email= ?";
 
-        String sqlQuery = "SELECT * FROM user WHERE email='"+email+"'";
-        ResultSet resultSet = Function.getData(sqlQuery);
-        try {
-            if(resultSet.next()){
-                data.setPassword(resultSet.getString("password"));
-                String currentPW = data.getPassword();
-                if (currentPW.equals(hashedPassword)) {
-                    Function.warning("Error", "Password Reset Failed", "Password is the same as current password. Please enter another password.");
-                    return;
-                }
+        try (Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
+             PreparedStatement ps = con.prepareStatement(updateQuery)) {
+            ps.setString(1, hashedPassword);
+            ps.setString(2, email);
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected>0) {
+                Function.success("Success", null, "Your password has been successfully updated.");
+                Node sourceNode = (Node) event.getSource();
+                Function.nextPage("Login.fxml", sourceNode, "Login");
+            } else {
+                Function.warning("Error", null, "Failed to update password. Please try again later.");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }
-
-        Node sourceNode = (Node) event.getSource();
-        if (Function.update(updateQuery, params)) {
-            Function.success("Success", null, "Your password has been successfully updated.");
-            Function.nextPage("Login.fxml", sourceNode, "Login");
-        } else {
             Function.warning("Error", null, "Failed to update password. Please try again later.");
         }
+
+
     }
 }

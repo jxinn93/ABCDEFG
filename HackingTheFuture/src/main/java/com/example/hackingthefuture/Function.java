@@ -140,41 +140,46 @@ public class Function {
 
     public static boolean update(String Query,Object[] item){
         Connection connection = null;
+        PreparedStatement ps = null;
         try {
             LoginDetail login = LoginDetail.getInstance();
             boolean data = login.getLogin();
             if(data){
-                connection = Database.getConnection("jdbc:mysql://localhost:3306/"+login.getUsername());
+                connection = Database.getConnection("jdbc:mysql://localhost:3306/hackingthefuture");
             }else{
                 connection = Database.getConnection();
             }
 
-            PreparedStatement preparedStatement = connection.prepareStatement(Query);
+            ps = connection.prepareStatement(Query);
 
             int i = 1;
             for (Object element : item) {
                 if (element instanceof Number) {
-                    preparedStatement.setInt(i, (Integer) element);
+                    ps.setInt(i, (Integer) element);
                 } else {
-                    preparedStatement.setString(i, (String) element);
+                    ps.setString(i, (String) element);
                 }
                 i++;
             }
 
 
-            int rowsAffected = preparedStatement.executeUpdate();
-            if (rowsAffected > 0) {
-                connection.close();
-                preparedStatement.close();
-                return true;
-            } else {
-                connection.close();
-                preparedStatement.close();
-                return false;
-            }
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected >0 ;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        } finally {
+            try{
+                if(ps != null){
+                    ps.close();
+                }
+                if(connection != null){
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -358,7 +363,7 @@ public class Function {
     }
 
 
-    public static boolean isMatchPassword(String passwrod,String c_password){
+    public static boolean isMatchPassword(String passwrod, String c_password){
         return passwrod.equals(c_password);
     }
 
