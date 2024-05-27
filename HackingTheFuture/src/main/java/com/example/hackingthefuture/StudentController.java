@@ -86,6 +86,8 @@ public class StudentController extends ViewProfileController{
     }
 
     public void viewQuizBTN(ActionEvent actionEvent) {
+        Node source = (Node) actionEvent.getSource();
+        Function.nextPage("viewQuiz.fxml", source, "Quiz");
 
     }
 

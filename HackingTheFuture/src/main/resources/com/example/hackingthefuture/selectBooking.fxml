@@ -21,7 +21,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </TextField>
-      <TextArea fx:id="distance" layoutX="163.0" layoutY="179.0" prefHeight="330.0" prefWidth="513.0">
+      <TextArea fx:id="distance" editable="false" layoutX="163.0" layoutY="179.0" prefHeight="330.0" prefWidth="513.0">
          <font>
             <Font size="24.0" />
          </font></TextArea>
