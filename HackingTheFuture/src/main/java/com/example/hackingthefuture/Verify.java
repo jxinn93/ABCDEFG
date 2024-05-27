@@ -69,7 +69,7 @@ public class Verify implements Initializable  {
                 Node sourceNode = (Node) event.getSource();
                 if(Function.insert(sql,objects)){
                     String username = data.getUsername();
-                    Database.createDatabase(username);
+
                     PassData.getInstance().clearAllValues();
                     Function.success("Successfully",null,"Sign Up Successfully.");
 

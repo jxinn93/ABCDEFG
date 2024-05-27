@@ -3,6 +3,8 @@ package com.example.hackingthefuture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,16 +12,33 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParentController extends ViewProfileController {
         @FXML
         private Label nameLabel;
         @FXML
         private TextField nameSearchTF;
-
+        private List<FamilyMember> parentsList = ParentChild.parentsList;
         public void initialize() {
             nameLabel.setText(UserClass.getUsername());
         }
+
+    public List<String> getChildrenUsernames() {
+        String targetUsername = UserClass.getUsername();
+        for (FamilyMember parent : parentsList) {
+            if (parent.getUsername().equals(targetUsername)) {
+                List<Child> children = parent.getChildren();
+                List<String> childrenUsernames = new ArrayList<>();
+                for (Child child : children) {
+                    childrenUsernames.add(child.getUsername());
+                }
+                return childrenUsernames;
+            }
+        }
+        return new ArrayList<>();
+    }
 
         @FXML
         public void viewProfileBTN(ActionEvent actionEvent) {
@@ -104,19 +123,18 @@ public class ParentController extends ViewProfileController {
         }
 
         public void viewBookingBTN(ActionEvent actionEvent) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewEvent.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                ViewEventController viewEventController = fxmlLoader.getController();
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
-                Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
-                currentStage.close();
-            }
-            catch (IOException e){
-                System.out.println(e.getMessage());
-            }
+           try {
+               FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hackingthefuture/bookingHistory.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e){
+        System.out.println(e.getMessage());
+    }
         }
 
         public void logoutBTN(ActionEvent actionEvent) {
@@ -136,5 +154,6 @@ public class ParentController extends ViewProfileController {
         }
 
 
-    }
+
+}
 

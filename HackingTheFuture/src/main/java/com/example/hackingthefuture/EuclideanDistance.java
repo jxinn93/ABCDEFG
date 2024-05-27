@@ -72,6 +72,14 @@ public class EuclideanDistance {
             double dy = this.y - y;
             return Math.sqrt(dx * dx + dy * dy) / 1000.0; // Convert to kilometers
         }
+
+        public String toString() {
+            return "Destination{" +
+                    "name='" + name + '\'' +
+                    ", x=" + x +
+                    ", y=" + y +
+                    '}';
+        }
     }
 }
 

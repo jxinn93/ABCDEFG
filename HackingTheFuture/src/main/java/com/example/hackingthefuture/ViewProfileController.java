@@ -3,6 +3,7 @@ package com.example.hackingthefuture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewProfileController {
@@ -39,6 +41,21 @@ public class ViewProfileController {
         String role = UserClass.getRole();
         String profileUsername = "";
         profile(username, email, coordinateX, coordinateY, role, profileUsername);
+    }
+
+    public List<String> getChildrenUsernames() {
+        String targetUsername = UserClass.getUsername();
+        for (FamilyMember parent : parentsList) {
+            if (parent.getUsername().equals(targetUsername)) {
+                List<Child> children = parent.getChildren();
+                List<String> childrenUsernames = new ArrayList<>();
+                for (Child child : children) {
+                    childrenUsernames.add(child.getUsername());
+                }
+                return childrenUsernames;
+            }
+        }
+        return new ArrayList<>();
     }
 
 
@@ -109,7 +126,7 @@ public class ViewProfileController {
 
                 case "Parent":
                     label2R.setVisible(false);
-                    label3.setText("Booking history: ");
+                    label4.setVisible(false);
                     String loggedInUsername = UserClass.getUsername();
                     String targetUsername = (profileUsername != null && !profileUsername.isEmpty()) ? profileUsername : loggedInUsername;
 
@@ -131,9 +148,9 @@ public class ViewProfileController {
                             }
 
                         }
-                        label4.setText("Children: " + childrenList.toString());
+                        label3.setText("Children: " + childrenList.toString());
                     } else {
-                        label4.setText("No children found");
+                        label3.setText("No children found");
 
                     }
 
@@ -206,45 +223,23 @@ public class ViewProfileController {
             System.out.println("Failed to connect to the database.");
         }
 
-        try {
-            switch (role) {
+        switch (role) {
 
-                case "Educator":
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Educator.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    EducatorController educatorController = fxmlLoader.getController();
-                    Stage stage = new Stage();
-                    stage.setScene(scene);
-                    stage.show();
-                    Stage currentStage = (Stage) nameLabel.getScene().getWindow();
-                    currentStage.close();
+            case "Educator":
+                Node sourceNode = (Node) actionEvent.getSource();
+                Function.nextPage("Educator.fxml",sourceNode,"Educatr");
 
-                    break;
-                case "Parent":
-                    FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("Parent.fxml"));
-                    Scene scene2 = new Scene(fxmlLoader2.load());
-                    ParentController parentController = fxmlLoader2.getController();
-                    Stage stage2 = new Stage();
-                    stage2.setScene(scene2);
-                    stage2.show();
-                    Stage currentStage2 = (Stage) nameLabel.getScene().getWindow();
-                    currentStage2.close();
-                    break;
+                break;
+            case "Parent":
+                sourceNode = (Node) actionEvent.getSource();
+                Function.nextPage("Parent.fxml",sourceNode,"Parent");
+                break;
 
-                case "Young Student":
-                    FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("Student.fxml"));
-                    Scene scene3 = new Scene(fxmlLoader3.load());
-                    StudentController studentController = fxmlLoader3.getController();
-                    Stage stage3 = new Stage();
-                    stage3.setScene(scene3);
-                    stage3.show();
-                    Stage currentStage3 = (Stage) nameLabel.getScene().getWindow();
-                    currentStage3.close();
-                    break;
+            case "Young Student":
+               sourceNode = (Node) actionEvent.getSource();
+                Function.nextPage("Student.fxml",sourceNode,"Student");
+                break;
 
-            }
-            } catch(IOException e){
-                System.out.println(e.getMessage());
-            }
+        }
     }
 }

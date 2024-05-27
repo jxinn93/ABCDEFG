@@ -3,6 +3,7 @@ package com.example.hackingthefuture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -40,36 +41,14 @@ public class CreateEventController {
     }
 
     public void viewProfileBTN(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewProfile.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            ViewProfileController viewProfileController = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) eventTitleTF.getScene().getWindow();
-            currentStage.close();
-        }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        Node sourceNode = (Node) actionEvent.getSource();
+        Function.nextPage("viewProfile.fxml", sourceNode, "Profile");
     }
 
     @FXML
     public void backBTN(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Educator.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            EducatorController educatorController = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) eventTitleTF.getScene().getWindow();
-            currentStage.close();
-        }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        Node sourceNode = (Node) actionEvent.getSource();
+        Function.nextPage("Educator.fxml", sourceNode, "Educator");
     }
 
     @FXML

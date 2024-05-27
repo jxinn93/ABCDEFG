@@ -63,17 +63,17 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <Button fx:id="registerBTN1" layoutX="683.0" layoutY="183.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+      <Button fx:id="registerBTN1" onAction="#Register" layoutX="683.0" layoutY="183.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="registerBTN2" layoutX="683.0" layoutY="295.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+      <Button fx:id="registerBTN2" onAction="#Register" layoutX="683.0" layoutY="295.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="registerBTN3" layoutX="683.0" layoutY="411.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
+      <Button fx:id="registerBTN3" onAction="#Register" layoutX="683.0" layoutY="411.0" mnemonicParsing="false" style="-fx-background-color: #ffab91;" text="Register" textFill="#fffdfc">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

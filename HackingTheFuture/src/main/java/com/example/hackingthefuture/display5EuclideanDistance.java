@@ -41,25 +41,19 @@ public class display5EuclideanDistance {
         //System.out.println(distances);
         //display.setText(distances);
     }
-
     public void displayDistances (String distances){
         display.setText(distances);
     }
 
 
 
+
+
     @FXML
     private void onBackButtonClicked(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/hackingthefuture/Parent.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            ParentController parentController = fxmlLoader.getController();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+        Node source = (Node) event.getSource();
+        Function.nextPage("Parent.fxml", source , "Parent");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
    /* public void displayDistance(List<EuclideanDistance.Destination> list) {

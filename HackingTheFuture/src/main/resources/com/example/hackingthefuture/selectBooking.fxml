@@ -16,12 +16,15 @@
             <Font name="Berlin Sans FB Demi Bold" size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="id" layoutX="574.0" layoutY="121.0" prefHeight="31.0" prefWidth="128.0" promptText="ID">
+      <TextField fx:id="id" layoutX="561.0" layoutY="115.0" onAction="#handleEnterPressed" prefHeight="42.0" prefWidth="147.0" promptText="ID">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </TextField>
-      <TextArea layoutX="163.0" layoutY="179.0" prefHeight="330.0" prefWidth="513.0" />
+      <TextArea fx:id="distance" layoutX="163.0" layoutY="179.0" prefHeight="330.0" prefWidth="513.0">
+         <font>
+            <Font size="24.0" />
+         </font></TextArea>
       <Button fx:id="back" accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#destination" prefHeight="88.0" prefWidth="120.0" style="-fx-background-color: #CFEDC6;">
          <graphic>
             <ImageView fitHeight="66.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
@@ -31,14 +34,18 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="183.0" fitWidth="194.0" layoutX="626.0" layoutY="417.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../Users/SCSM11/Downloads/map-removebg-preview.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="155.0" fitWidth="114.0" layoutX="23.0" layoutY="102.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../Users/SCSM11/Downloads/compass-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="confirm" layoutX="675.0" layoutY="551.0" mnemonicParsing="false" onAction="#confirmBook" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #CFEDC6;" text="Next">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+         </font></Button>
+      <ImageView fitHeight="183.0" fitWidth="167.0" layoutX="576.0" layoutY="418.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Users/SCSM11/Downloads/map-removebg-preview.png" />
          </image>
       </ImageView>
    </children>

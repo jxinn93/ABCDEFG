@@ -3,6 +3,7 @@ package com.example.hackingthefuture;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -89,35 +90,13 @@ public class StudentController extends ViewProfileController{
     }
 
     public void viewEventBTN(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewEvent.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            ViewEventController viewEventController = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
-            currentStage.close();
-        }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        Node sourceNode = (Node) actionEvent.getSource();
+        Function.nextPage("viewEvent.fxml", sourceNode, "Event");
     }
 
     public void logoutBTN(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            LoginController loginController = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
-            currentStage.close();
-        }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        Node sourceNode = (Node) actionEvent.getSource();
+        Function.nextPage("Login.fxml", sourceNode, "Login");
     }
 
 
