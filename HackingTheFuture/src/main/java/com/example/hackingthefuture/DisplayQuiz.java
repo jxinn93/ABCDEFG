@@ -28,6 +28,7 @@ public class DisplayQuiz {
     @FXML
     private CheckBox mathematics;
 
+
     private static final String DB_URL = "jdbc:mysql://localhost:3306/hackingthefuture";
     private static final String USER = "root";
     private static final String PASS = "";
@@ -40,9 +41,9 @@ public class DisplayQuiz {
     }
 
     public String setDisplayAll() {
+        Function.warning("Take Note",null, "You only have one attempt to take the quiz");
         StringBuilder s = new StringBuilder();
         linkPositions.clear();
-
         try {
             Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = con.createStatement();
@@ -58,7 +59,7 @@ public class DisplayQuiz {
                 int start = s.length();
                 s.append(String.format("Quiz Link: %s\n\n", quizLink));
                 int end = start + quizLink.length();
-                linkPositions.add(new LinkPosition(quizLink, start, end));
+                linkPositions.add(new LinkPosition(quizTitle, quizLink, start, end));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -67,10 +68,24 @@ public class DisplayQuiz {
     }
 
     private void handleMouseClick(MouseEvent mouseEvent) {
+
         int caretPosition = display.getCaretPosition();
         linkPositions.forEach(linkPosition -> {
             if (caretPosition >= linkPosition.start && caretPosition <= linkPosition.end) {
-                openLink(linkPosition.url);
+
+                try {
+                    if (!isQuizCompleted(linkPosition.quizTitle)) {
+                        markQuizCompleted(linkPosition.quizTitle);
+                        awardPoints();
+                        openLink(linkPosition.url);
+                        Function.success("Success!",null, "2 marks have been rewarded");
+                    } else {
+                        System.out.println("You have completed this quiz already");
+                        Function.warning("Failed",null, "You have already completed the quiz");
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
@@ -104,10 +119,7 @@ public class DisplayQuiz {
 
         if (selectedThemes.isEmpty()) {
             display.setText(setDisplayAll());
-
-
         } else {
-
             display.setText(setDisplayedFiltered(selectedThemes));
         }
         display.addEventFilter(MouseEvent.MOUSE_CLICKED, this::handleMouseClick);
@@ -120,7 +132,6 @@ public class DisplayQuiz {
                 .map(theme -> "'" + theme + "'")
                 .collect(Collectors.joining(", "));
         String query = "SELECT * FROM createquiz WHERE selectedTheme IN (" + themeFilter + ")";
-        System.out.println("Executing filtered query: " + query);
 
         try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
              Statement stmt = con.createStatement();
@@ -131,13 +142,12 @@ public class DisplayQuiz {
                 String quizDescription = rs.getString("quizDescription");
                 String quizLink = rs.getString("quizLink");
 
-
                 s.append(String.format("Quiz Title: %s\n", quizTitle));
                 s.append(String.format("Quiz Description: %s\n", quizDescription));
                 int start = s.length();
                 s.append(String.format("Quiz Link: %s\n\n", quizLink));
                 int end = start + quizLink.length();
-                linkPositions.add(new LinkPosition(quizLink, start, end));
+                linkPositions.add(new LinkPosition(quizTitle, quizLink, start, end));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -145,18 +155,80 @@ public class DisplayQuiz {
         return s.toString();
     }
 
+    private boolean isQuizCompleted(String quizTitle) throws SQLException {
+        String username = UserClass.getUsername();
+        String query = "SELECT status FROM quiz WHERE username = ? AND quizTitle = ?";
+
+        try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.setString(2, quizTitle);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getBoolean("status");
+            }
+        }
+        return false;
+    }
+
+    private void markQuizCompleted(String quizTitle) throws SQLException {
+        String username = UserClass.getUsername();
+        String queryCheck = "SELECT * FROM quiz WHERE username = ? AND quizTitle = ?";
+        String queryInsert = "INSERT INTO quiz (username, quizTitle, status) VALUES (?, ?, TRUE)";
+        String queryUpdate = "UPDATE quiz SET status = TRUE WHERE username = ? AND quizTitle = ?";
+
+        try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement psCheck = con.prepareStatement(queryCheck);
+             PreparedStatement psInsert = con.prepareStatement(queryInsert);
+             PreparedStatement psUpdate = con.prepareStatement(queryUpdate)) {
+
+            psCheck.setString(1, username);
+            psCheck.setString(2, quizTitle);
+            ResultSet rs = psCheck.executeQuery();
+            if(rs.next()) {
+                boolean status = rs.getBoolean("status");
+                if (!status) {
+                    psUpdate.setString(1, username);
+                    psUpdate.setString(2, quizTitle);
+                    psUpdate.executeUpdate();
+                } else {
+                    Function.warning("Failed",null, "You have already completed the quiz");
+                }
+            } else {
+                psInsert.setString(1,username);
+                psInsert.setString(2,quizTitle);
+                psInsert.executeUpdate();
+            }
+        }
+
+    }
+
+    private void awardPoints() throws SQLException {
+        String username = UserClass.getUsername();
+        String query = "UPDATE user SET points = points + 2 WHERE username = ?";
+        try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.executeUpdate();
+        }
+    }
 
 }
 
 
 class LinkPosition {
+
     String url;
+    String quizTitle;
     int start;
     int end;
 
-    LinkPosition(String url, int start, int end) {
+    LinkPosition(String quizTitle, String url, int start, int end) {
+        this.quizTitle = quizTitle;
         this.url = url;
         this.start = start;
         this.end = end;
     }
+
 }
+
