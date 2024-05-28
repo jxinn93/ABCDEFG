@@ -17,27 +17,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DisplayQuiz {
-@FXML
-     private TextArea display;
-     @FXML
-     private CheckBox science;
-     @FXML
-     private CheckBox technology;
-     @FXML
-     private CheckBox engineering;
-     @FXML
-     private CheckBox mathematics;
+    @FXML
+    private TextArea display;
+    @FXML
+    private CheckBox science;
+    @FXML
+    private CheckBox technology;
+    @FXML
+    private CheckBox engineering;
+    @FXML
+    private CheckBox mathematics;
 
     private static final String DB_URL = "jdbc:mysql://localhost:3306/hackingthefuture";
     private static final String USER = "root";
     private static final String PASS = "";
     private final List<LinkPosition> linkPositions = new ArrayList<>();
 
-   public void initialize() {
-       display.setText(setDisplayAll());
-       display.addEventFilter(MouseEvent.MOUSE_CLICKED, this::handleMouseClick);
+    public void initialize() {
+        display.setText(setDisplayAll());
+        display.addEventFilter(MouseEvent.MOUSE_CLICKED, this::handleMouseClick);
 
-   }
+    }
+
     public String setDisplayAll() {
         StringBuilder s = new StringBuilder();
         linkPositions.clear();
@@ -47,7 +48,7 @@ public class DisplayQuiz {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM createquiz");
 
-            while (rs.next()){
+            while (rs.next()) {
                 String quizTitle = rs.getString("quizTitle");
                 String quizDescription = rs.getString("quizDescription");
                 String quizLink = rs.getString("quizLink");
@@ -73,6 +74,7 @@ public class DisplayQuiz {
             }
         });
     }
+
     private void openLink(String url) {
         if (Desktop.isDesktopSupported()) {
             try {
@@ -82,14 +84,15 @@ public class DisplayQuiz {
             }
         }
     }
+
     public void backBTN(ActionEvent event) {
         Node sourceNode = (Node) event.getSource();
-        Function.nextPage("Student.fxml",sourceNode,"student");
+        Function.nextPage("Student.fxml", sourceNode, "student");
     }
 
     public void viewProfileBTN(ActionEvent event) {
         Node sourceNode = (Node) event.getSource();
-        Function.nextPage("ViewProfile.fxml",sourceNode,"Profile");
+        Function.nextPage("ViewProfile.fxml", sourceNode, "Profile");
     }
 
     public void filterQuizzes(ActionEvent event) throws SQLException {
@@ -101,21 +104,22 @@ public class DisplayQuiz {
 
         if (selectedThemes.isEmpty()) {
             display.setText(setDisplayAll());
-            System.out.println(true);
+
 
         } else {
-            System.out.println("Selected themes: " + selectedThemes);
+
             display.setText(setDisplayedFiltered(selectedThemes));
         }
         display.addEventFilter(MouseEvent.MOUSE_CLICKED, this::handleMouseClick);
     }
 
     private String setDisplayedFiltered(List<String> selectedThemes) {
-       StringBuilder s = new StringBuilder();
-       linkPositions.clear();
-       String themeFilter = String.join(",", selectedThemes);
-
-        String query = "SELECT * FROM createquiz WHERE selectedTheme IN (" + selectedThemes.stream().map(t -> "'" + t + "'").collect(Collectors.joining(",")) + ")";
+        StringBuilder s = new StringBuilder();
+        linkPositions.clear();
+        String themeFilter = selectedThemes.stream()
+                .map(theme -> "'" + theme + "'")
+                .collect(Collectors.joining(", "));
+        String query = "SELECT * FROM createquiz WHERE selectedTheme IN (" + themeFilter + ")";
         System.out.println("Executing filtered query: " + query);
 
         try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -140,8 +144,9 @@ public class DisplayQuiz {
         }
         return s.toString();
     }
-   }
 
+
+}
 
 
 class LinkPosition {

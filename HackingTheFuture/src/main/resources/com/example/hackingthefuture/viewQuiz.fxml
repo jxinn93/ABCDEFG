@@ -45,7 +45,7 @@
             <Image url="@viewEventPage.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="163.0" fitWidth="247.0" layoutX="-4.0" layoutY="446.0" pickOnBounds="true" preserveRatio="true" rotate="-2.7">
+      <ImageView fitHeight="127.0" fitWidth="184.0" layoutX="-2.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true" rotate="-2.7">
          <image>
             <Image url="@viewEventPage(1).png" />
          </image>
@@ -54,7 +54,7 @@
       <CheckBox fx:id="technology" layoutX="232.0" layoutY="85.0" mnemonicParsing="false" text="Technology" />
       <CheckBox fx:id="engineering" layoutX="377.0" layoutY="85.0" mnemonicParsing="false" text="Engineering" />
       <CheckBox fx:id="mathematics" layoutX="510.0" layoutY="85.0" mnemonicParsing="false" text="Mathematics" />
-      <Button layoutX="632.0" layoutY="77.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="78.0" text="Filter" onAction="#filterQuizzes" />
+      <Button layoutX="632.0" layoutY="77.0" mnemonicParsing="false" onAction="#filterQuizzes" prefHeight="36.0" prefWidth="78.0" text="Filter" />
       <ImageView fitHeight="101.0" fitWidth="102.0" layoutX="706.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@profileIcon-removebg-preview.png" />

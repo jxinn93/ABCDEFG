@@ -27,7 +27,7 @@
             <Font name="Times New Roman" size="63.0" />
          </font>
       </Text>
-      <TextArea fx:id="display" editable="false" layoutX="139.0" layoutY="122.0" onAction="#setDisplay" prefHeight="408.0" prefWidth="576.0" text="&#10;">
+      <TextArea fx:id="display" editable="false" layoutX="139.0" layoutY="122.0" prefHeight="408.0" prefWidth="576.0" text="&#10;">
          <font>
             <Font name="Times New Roman" size="25.0" />
          </font>
