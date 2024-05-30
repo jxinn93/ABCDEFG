@@ -21,19 +21,19 @@ public class DisplayBooking {
         display.setText(setDisplay());
     }
     public String setDisplay() {
+       String username = UserClass.getUsername();
         StringBuilder s = new StringBuilder();
 
         try {
-            System.out.println("Connecting to the database...");
             Connection con = DriverManager.getConnection(DB_URL,USER,PASS);
-            System.out.println("Connected to the database!");
 
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM parent");
+            String query = "SELECT * FROM parent WHERE username = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
 
             while(rs.next()){
                 int id = rs.getInt("userID");
-                String username = rs.getString("username");
                 String destination = rs.getString("Destination");
                 String bookingDate = rs.getString("TimeSlot");
                 s.append(String.format("ID:  %d, Username: %s, Destination: %s, Booking date: %s\n", id, username, destination, bookingDate));

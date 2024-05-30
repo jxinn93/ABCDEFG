@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #C2B2D2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.LeaderboardController">
+   <children>
+      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="528.0" fitWidth="752.0" layoutX="40.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@leaderboard.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="249.0" layoutY="42.0" prefHeight="58.0" prefWidth="247.0" text="Leaderboard" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #C2B2D2;">
+         <graphic>
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logoutIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="671.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="106.0" prefWidth="124.0" style="-fx-background-color: #C2B2D2;">
+         <graphic>
+            <ImageView fitHeight="101.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@profileIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="709.0" layoutY="99.0" text="Profile" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="176.0" fitWidth="170.0" layoutX="640.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@leaderboardIcon2.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nameLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="135.0" layoutY="195.0" prefHeight="370.0" prefWidth="362.0" text="list" textFill="#ab47bc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="pointsLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="513.0" layoutY="195.0" prefHeight="370.0" prefWidth="170.0" text="list" textFill="#ab47bc">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Line endX="492.4000244140625" endY="1.52587890625E-5" layoutX="223.0" layoutY="195.0" startX="-100.0" stroke="#7e57c2" />
+      <Line endX="-100.0" endY="387.7056884765625" layoutX="604.0" layoutY="170.0" startX="-100.0" startY="-16.294326782226562" stroke="#7e57c2" />
+      <Line endX="-100.0" endY="387.7056884765625" layoutX="287.0" layoutY="169.0" startX="-100.0" startY="-14.494308471679688" stroke="#7e57c2" />
+      <Label layoutX="122.0" layoutY="161.0" prefHeight="34.0" prefWidth="66.0" text=" RANK" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="316.0" layoutY="160.0" prefHeight="34.0" prefWidth="66.0" text="User" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="572.0" layoutY="160.0" prefHeight="35.0" prefWidth="87.0" text="Points" textFill="#7e57c2">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="133.0" fitWidth="151.0" layoutX="505.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@leaderboardIcon4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="148.0" fitWidth="203.0" layoutX="-21.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true" rotate="18.4">
+         <image>
+            <Image url="@leaderboardIcon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fbe9e7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.ViewProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fbe9e7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.ViewProfileController">
    <children>
-      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#ff7043">
+      <Label layoutX="42.0" layoutY="93.0" text="Back" textFill="#ff7043">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -24,23 +24,24 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
+      <Label fx:id="labelF" layoutX="596.0" layoutY="97.0" prefHeight="35.0" prefWidth="127.0" />
+      <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
          <graphic>
-            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="67.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:///C:/HackingTheFuture2.0\HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png"/>
+                  <Image url="@logoutIcon-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
       <ImageView fitHeight="101.0" fitWidth="102.0" layoutX="350.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png"/>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png" />
          </image>
       </ImageView>
       <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="168.0" prefHeight="51.0" prefWidth="247.0" text="Name" textFill="#795548">
          <font>
-            <Font name="System Bold" size="30.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <Label fx:id="roleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="239.0" prefHeight="51.0" prefWidth="270.0" style="-fx-border-color: #ffab91;" text="Role" textFill="#795548">
@@ -73,5 +74,10 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="follow" layoutX="570.0" layoutY="102.0" mnemonicParsing="false" onAction="#CheckFriends" prefHeight="44.0" prefWidth="101.0" style="-fx-background-color: #E5C6A9;" text="Follow" textFill="#795548">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

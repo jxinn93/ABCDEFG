@@ -15,6 +15,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DisplayQuiz {
     @FXML
@@ -205,14 +207,17 @@ public class DisplayQuiz {
 
     private void awardPoints() throws SQLException {
         String username = UserClass.getUsername();
-        String query = "UPDATE user SET points = points + 2 WHERE username = ?";
+        String query = "UPDATE user SET points = points + 2, pointLastUpdated=? WHERE username = ?";
         try (Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
              PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, username);
-            ps.executeUpdate();
+             LocalDateTime now = LocalDateTime.now();
+             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+             String formattedDateTime = now.format(formatter);
+             ps.setString(1, formattedDateTime);
+             ps.setString(2, username);
+             ps.executeUpdate();
         }
     }
-
 }
 
 

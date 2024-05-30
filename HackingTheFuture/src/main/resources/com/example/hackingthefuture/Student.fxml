@@ -17,37 +17,27 @@
                   <Image url="@profileIcon-removebg-preview.png" />
                </image>
             </ImageView>
-         </graphic>
-      </Button>
+         </graphic></Button>
       <Label layoutX="713.0" layoutY="99.0" text="Profile" textFill="#756d7d">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="nameSearchTF" alignment="TOP_CENTER" layoutX="210.0" layoutY="139.0" prefHeight="46.0" prefWidth="404.0" promptText="Search user">
+      <TextField fx:id="nameSearchTF" alignment="TOP_CENTER" layoutX="179.0" layoutY="140.0" prefHeight="46.0" prefWidth="404.0" promptText="Search user">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#logoutBTN" prefHeight="60.0" prefWidth="47.0" style="-fx-background-color: #C2B2D2;">
-         <graphic>
-            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@logoutIcon-removebg-preview.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label layoutX="33.0" layoutY="99.0" text="Log Out" textFill="#756d7d">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="401.0" fitWidth="214.0" layoutX="-8.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../Users/SCSM11/Downloads/Student.png" />
          </image>
       </ImageView>
+      <Label layoutX="29.0" layoutY="101.0" text="Log Out" textFill="#756d7d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
       <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#756d7d">
          <font>
             <Font name="System Bold" size="35.0" />
@@ -58,16 +48,33 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Button layoutX="635.0" layoutY="140.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="29.0" prefWidth="36.0" style="-fx-background-color: #C2B2D2;">
+      <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#logoutBTN" prefHeight="60.0" prefWidth="47.0" style="-fx-background-color: #C2B2D2;">
          <graphic>
-            <ImageView fitHeight="38.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logoutIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="notifications" layoutX="691.0" layoutY="140.0" mnemonicParsing="false" onAction="#DisplayN" prefHeight="72.0" prefWidth="86.0" style="-fx-background-color: #C2B2D2;">
+         <graphic>
+            <ImageView fitHeight="72.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/mail-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="594.0" layoutY="138.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="51.0" prefWidth="57.0" style="-fx-background-color: #9F9EA1;">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@searchIcon.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="493.0" layoutY="300.0" mnemonicParsing="false" onAction="#viewQuizBTN" prefHeight="157.0" prefWidth="204.0" style="-fx-background-color: #9F9EA1;" text="View Quiz" textAlignment="CENTER" textFill="#756d7d">
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="481.0" layoutY="238.0" mnemonicParsing="false" onAction="#viewQuizBTN" prefHeight="157.0" prefWidth="204.0" style="-fx-background-color: #9F9EA1;" text="View Quiz" textAlignment="CENTER" textFill="#756d7d">
          <graphic>
             <ImageView fitHeight="125.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -79,11 +86,28 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="222.0" layoutY="300.0" mnemonicParsing="false" onAction="#viewEventBTN" prefHeight="160.0" prefWidth="214.0" style="-fx-background-color: #9F9EA1;" text="View Event" textAlignment="CENTER" textFill="#756d7d">
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="221.0" layoutY="238.0" mnemonicParsing="false" onAction="#viewEventBTN" prefHeight="160.0" prefWidth="214.0" style="-fx-background-color: #9F9EA1;" text="View Event" textAlignment="CENTER" textFill="#756d7d">
          <graphic>
             <ImageView fitHeight="125.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@viewEventIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="693.0" layoutY="228.0" text="Notification" textFill="#756d7d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="350.0" layoutY="426.0" mnemonicParsing="false" onAction="#viewLeaderboardBTN" prefHeight="160.0" prefWidth="214.0" style="-fx-background-color: #9F9EA1;" text="View Leaderboard" textAlignment="CENTER" textFill="#756d7d">
+         <graphic>
+            <ImageView fitHeight="125.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@viewLeaderboard.png" />
                </image>
             </ImageView>
          </graphic>

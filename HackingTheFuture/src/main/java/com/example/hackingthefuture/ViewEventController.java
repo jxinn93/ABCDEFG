@@ -12,7 +12,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
@@ -160,10 +162,14 @@ public class ViewEventController {
                     ps.executeUpdate();
                     Function.success("Registration Successfull", null, "Successfully register. 5 points are rewarded.");
 
-                    String queryUser = "UPDATE user SET points = points + ? WHERE username = ? ";
+                    String queryUser = "UPDATE user SET points = points + ?, pointLastUpdated=? WHERE username = ? ";
+                    LocalDateTime now = LocalDateTime.now();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String formattedDateTime = now.format(formatter);
                     ps = con.prepareStatement(queryUser);
                     ps.setInt(1, 5);
-                    ps.setString(2, username);
+                    ps.setString(2, formattedDateTime);
+                    ps.setString(3, username);
                     ps.executeUpdate();
 
                 } else {

@@ -26,26 +26,17 @@ public class StudentController extends ViewProfileController{
 
     @FXML
     public void viewProfileBTN(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewProfile.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            ViewProfileController viewProfileController = fxmlLoader.getController();
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
-            currentStage.close();
-        }
-        catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+        Node sourceNode = (Node) actionEvent.getSource();
+        Function.nextPage("ViewProfile.fxml", sourceNode, "Profile");
     }
 
     @FXML
     public void viewOtherProfile(ActionEvent actionEvent) {
         String nameSearch=nameSearchTF.getText();
+
         boolean found=false;
         try {
+
             String SUrl = "jdbc:mysql://localhost:3306/hackingthefuture";
             String SUser = "root";
             String SPass = "";
@@ -68,6 +59,8 @@ public class StudentController extends ViewProfileController{
                 Scene scene = new Scene(fxmlLoader.load());
                 ViewProfileController viewProfileController = fxmlLoader.getController();
                 viewProfileController.profile(nameSearch,email, coordinateX, coordinateY ,role, nameSearch); // Pass searched username to ViewProfileController
+                viewProfileController.setNameSearch(nameSearch);
+
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
@@ -84,6 +77,8 @@ public class StudentController extends ViewProfileController{
             throw new RuntimeException(e);
         }
     }
+
+
 
     public void viewQuizBTN(ActionEvent actionEvent) {
         Node source = (Node) actionEvent.getSource();
@@ -102,5 +97,14 @@ public class StudentController extends ViewProfileController{
     }
 
 
+    public void viewLeaderboardBTN(ActionEvent event) {
+        Node sourceNode = (Node) event.getSource();
+        Function.nextPage("Leaderboard.fxml", sourceNode, "Leaderboard");
+    }
+
+    public void DisplayN(ActionEvent event) throws SQLException {
+        Node sourceNode = (Node) event.getSource();
+        Function.nextPage("Friend.fxml", sourceNode, "Friend");
+    }
 }
 
