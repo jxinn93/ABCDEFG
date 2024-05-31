@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.EducatorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.EducatorController">
    <children>
       <Button layoutX="668.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="105.0" prefWidth="132.0" style="-fx-background-color: #e0f2f1;">
          <graphic>
@@ -33,7 +33,7 @@
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png"/>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/logoutIcon-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
@@ -45,7 +45,7 @@
       </Label>
       <ImageView fitHeight="401.0" fitWidth="214.0" layoutX="-8.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/educator-removebg-preview.png"/>
+            <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/educator-removebg-preview.png" />
          </image>
       </ImageView>
       <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#26a69a">
@@ -55,7 +55,7 @@
       </Label>
       <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="436.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="name" textFill="#26a69a">
          <font>
-            <Font name="System Bold" size="35.0" />
+            <Font name="System Bold" size="28.0" />
          </font>
       </Label>
       <Button layoutX="635.0" layoutY="140.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="29.0" prefWidth="36.0" style="-fx-background-color: #b2dfdb;">
@@ -71,7 +71,7 @@
          <graphic>
             <ImageView fitHeight="167.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/createEventIcon.png"/>
+                  <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/createEventIcon.png" />
                </image>
             </ImageView>
          </graphic>

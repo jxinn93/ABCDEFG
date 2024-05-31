@@ -39,7 +39,7 @@
             <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/profileIcon-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="277.0" layoutY="168.0" prefHeight="51.0" prefWidth="247.0" text="Name" textFill="#795548">
+      <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="167.0" prefHeight="51.0" prefWidth="453.0" text="Name" textFill="#795548">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

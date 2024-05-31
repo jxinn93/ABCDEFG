@@ -278,9 +278,7 @@ public class ViewProfileController {
     }
 
     public void CheckFriends(ActionEvent event) throws SQLException {
-        if(UserClass.getUsername().equals(getNameSearch())){
-            Function.warning("Sorry", null, "You can't follow yourself");
-        } else {
+
                 String result = checkExist();
                 if( result != null ){
                      Function.warning ("Failed", null, result);
@@ -288,7 +286,7 @@ public class ViewProfileController {
 
         }
 
-    }
+
 
     public String checkExist() throws SQLException {
         Connection con = DriverManager.getConnection(SUrl, SUser, SPass);

@@ -482,20 +482,38 @@ public class Function {
     }
 
     private static boolean hasSpecialCharacter( char password ){
-        switch (password){
-            case'!':
-            case'@':
-            case'#':
-            case'$':
-            case'%':
-            case'^':
-            case'&':
-            case'*':
-            case'(':
-            case')':
-            case'-':
-            case'+':
-            case'_':
+        switch (password) {
+            case '!':
+            case '@':
+            case '#':
+            case '$':
+            case '%':
+            case '^':
+            case '&':
+            case '*':
+            case '(':
+            case ')':
+            case '-':
+            case '+':
+            case '_':
+            case '[':
+            case ']':
+            case '{':
+            case '}':
+            case ';':
+            case ':':
+            case '\'':
+            case '\"':
+            case '<':
+            case '>':
+            case ',':
+            case '.':
+            case '/':
+            case '?':
+            case '\\':
+            case '|':
+            case '`':
+            case '~':
                 return true;
             default:
                 return false;
