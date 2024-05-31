@@ -51,7 +51,6 @@ public class FriendController {
 
             while (rs.next()) {
                 String sender = rs.getString("Sender");
-                CheckBox checkBox = new CheckBox();
                 requests.add(new FriendRequest(sender));
             }
         }
@@ -64,7 +63,7 @@ public class FriendController {
                      protected void updateItem(FriendRequest item, boolean empty) {
                          super.updateItem(item, empty);
                          if (item != null && !empty) {
-                             setText(item.getSender() + " has requested to add you as friend");
+                             setText(item.getSender() + " has requested to add you as friend!");
                              setGraphic(item.getCheckBox());
                          } else {
                              setText(null);
@@ -85,12 +84,14 @@ public class FriendController {
     @FXML
     private void rejectButtonClicked(ActionEvent event) throws SQLException {
         handleSelectedRequests("rejected");
-        Function.success("Success", "Oops", "You have rejected the request");
+        Function.success("Rejected", "Oops", "You have rejected the request");
     }
 
     private void handleSelectedRequests(String status) throws SQLException {
         String username = UserClass.getUsername();
         ObservableList<FriendRequest> updatedRequests = FXCollections.observableArrayList(friendRequestsList.getItems());
+        ObservableList<FriendRequest> requestsToRemove = FXCollections.observableArrayList();
+
         try (Connection con = DriverManager.getConnection(SUrl, SUser, SPass)) {
             String updateQuery = "UPDATE friendrequests SET Status = ? WHERE Sender = ? AND Receiver = ?";
             String insertQuery = "INSERT INTO friends (Sender, Receiver) VALUES (?, ?)";
@@ -101,18 +102,24 @@ public class FriendController {
                     String sender = request.getSender();
 
                     if ("accepted".equals(status)) {
-                    try (PreparedStatement psUpdate = con.prepareStatement(updateQuery)) {
+                    try (PreparedStatement psUpdate = con.prepareStatement(updateQuery);
+                         PreparedStatement psInsert = con.prepareStatement(insertQuery)){
                         psUpdate.setString(1, status);
                         psUpdate.setString(2, sender);
                         psUpdate.setString(3, username);
                         psUpdate.executeUpdate();
 
+                        psInsert.setString(1, sender);
+                        psInsert.setString(2, username);
+                        psInsert.executeUpdate();
+
+                        psInsert.setString(1, username);
+                        psInsert.setString(2, sender);
+                        psInsert.executeUpdate();
+
                     }
-                    try (PreparedStatement psInsert = con.prepareStatement(insertQuery)) {
-                            psInsert.setString(1, sender);
-                            psInsert.setString(2, username);
-                            psInsert.executeUpdate();
-                        }
+
+
                     } else if("rejected".equals(status)) {
                         try (PreparedStatement psDelete = con.prepareStatement(deleteQuery)) {
                             psDelete.setString(1, sender);
@@ -120,14 +127,14 @@ public class FriendController {
                             psDelete.executeUpdate();
 
                         }
+                    }requestsToRemove.add(request);
                     }
-                    updatedRequests.remove(request);
-                }
             }
         }
-
-        // Reload the friend requests list to reflect changes
+        updatedRequests.removeAll(requestsToRemove);
         friendRequestsList.setItems(updatedRequests);
+
+
     }
 
     public void onBackButtonClicked(ActionEvent event) {

@@ -14,6 +14,7 @@ module com.example.hackingthefuture {
     requires com.almasb.fxgl.all;
     requires java.mail;
     requires java.desktop;
+    requires mysql.connector.j;
 
     opens com.example.hackingthefuture to javafx.fxml;
     exports com.example.hackingthefuture;

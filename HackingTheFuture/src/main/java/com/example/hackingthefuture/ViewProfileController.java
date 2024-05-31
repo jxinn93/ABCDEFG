@@ -1,5 +1,6 @@
 package com.example.hackingthefuture;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,6 +27,8 @@ public class ViewProfileController {
 
     public Connection con;
     private List<FamilyMember> parentsList = ParentChild.parentsList;
+
+
     private String nameSearch;
 
     @FXML
@@ -182,16 +185,8 @@ public class ViewProfileController {
                     label2R.setVisible(true);
                     label2R.setText("Points: " + points);
                     label3.setText("Parents: " + (showParent.length() > 0 ? showParent.toString() : "No Parents Found"));
-                    label4.setText("Friends: ");
                     labelF.setVisible(true);
-                    String query2 = "SELECT * FROM friends WHERE Sender= ?";
-                    ps = con.prepareStatement(query2);
-                    ps.setString(1, username);
-                    ResultSet rs2 = ps.executeQuery();
-                    if(rs2.next()) {
-                        String friendName = rs2.getString("Receiver");
-                        label4.setText("Friend: " + friendName+ " ");
-                    }
+                    showFriends(username);
 
                     break;
             }
@@ -207,6 +202,34 @@ public class ViewProfileController {
                 e.printStackTrace();
             }
         }
+    }
+    public void showFriends (String username){
+
+        StringBuilder s = new StringBuilder();
+        List<String> friends = new ArrayList<>();
+
+        try(Connection con = DriverManager.getConnection(SUrl,SUser,SPass)){
+            String query2 = "SELECT CASE WHEN Sender = ? THEN Receiver ELSE Sender END AS friend " + "FROM friends WHERE Sender = ? ";
+            PreparedStatement ps = con.prepareStatement(query2);
+            ps.setString(1, username);
+            ps.setString(2, username);
+
+            ResultSet rs2 = ps.executeQuery();
+            while(rs2.next()){
+                String friendUsername = rs2.getString("friend");
+                friends.add(friendUsername);
+            }
+            for(int i = 0; i<friends.size(); i ++){
+                s.append(friends.get(i));
+                if(i< friends.size ()-1){
+                    s.append(" , ");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        label4.setText("Friend: " + s.toString());
+
     }
 
 
@@ -255,19 +278,22 @@ public class ViewProfileController {
     }
 
     public void CheckFriends(ActionEvent event) throws SQLException {
-        String result = checkExist();
-        if( result != null ){
-            Function.warning ("Failed", null, result);
-        } else {
+        if(UserClass.getUsername().equals(getNameSearch())){
             Function.warning("Sorry", null, "You can't follow yourself");
+        } else {
+                String result = checkExist();
+                if( result != null ){
+                     Function.warning ("Failed", null, result);
         }
-        Node sourceNode = (Node) event.getSource();
-        Function.nextPage("ViewProfile.fxml", sourceNode, "Students");
+
+        }
+
     }
 
     public String checkExist() throws SQLException {
         Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
         try {
+
             String checkQueryF = "SELECT * FROM friends WHERE (Sender = ? AND Receiver = ?) OR (Receiver = ? AND Sender = ?)";
             PreparedStatement psCheck = con.prepareStatement(checkQueryF);
             psCheck.setString(1, UserClass.getUsername());

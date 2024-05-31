@@ -35,7 +35,7 @@
                       </Label>
                       <Button fx:id="button_forgotpw" layoutX="342.0" layoutY="392.0" mnemonicParsing="false" onAction="#forgot" prefWidth="149.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Forgot Password?" textFill="#48478c" />
                   <PasswordField fx:id="pf_password" layoutX="143.0" layoutY="219.0" prefHeight="26.0" prefWidth="250.0" promptText="Password" />
-                  <Button fx:id="button_login" layoutX="150.0" layoutY="285.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="LOGIN" textFill="WHITE" />
+                  <Button fx:id="button_login" layoutX="143.0" layoutY="285.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="250.0" style="-fx-background-color: #48478c; -fx-cursor: hand;" text="LOGIN" textFill="WHITE" />
                   </children>
             </AnchorPane>
           </children>

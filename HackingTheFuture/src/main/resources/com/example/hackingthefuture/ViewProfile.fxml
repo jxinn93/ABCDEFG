@@ -74,9 +74,9 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="follow" layoutX="570.0" layoutY="102.0" mnemonicParsing="false" onAction="#CheckFriends" prefHeight="44.0" prefWidth="101.0" style="-fx-background-color: #E5C6A9;" text="Follow" textFill="#795548">
+      <Button fx:id="follow" layoutX="563.0" layoutY="95.0" mnemonicParsing="false" onAction="#CheckFriends" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: #E5C6A9;" text="ADD FRIEND" textFill="#795548">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="16.0" />
          </font>
       </Button>
    </children>
