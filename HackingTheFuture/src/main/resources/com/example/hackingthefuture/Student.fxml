@@ -38,14 +38,14 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#756d7d">
+      <Label layoutX="179.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#756d7d">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="436.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="name" textFill="#756d7d">
+      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="350.0" layoutY="47.0" prefHeight="51.0" prefWidth="308.0" text="name" textFill="#756d7d">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#logoutBTN" prefHeight="60.0" prefWidth="47.0" style="-fx-background-color: #C2B2D2;">

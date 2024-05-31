@@ -48,14 +48,14 @@
             <Image url="@../../../../../../../../Users/SCSM11/Downloads/3d-portrait-happy-family-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#405738">
+      <Label layoutX="227.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#405738">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="436.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="name" textFill="#405738">
+      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="397.0" layoutY="47.0" prefHeight="51.0" prefWidth="290.0" text="name" textFill="#405738">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <Button layoutX="635.0" layoutY="140.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="29.0" prefWidth="36.0" style="-fx-background-color: #A0DB8E;">

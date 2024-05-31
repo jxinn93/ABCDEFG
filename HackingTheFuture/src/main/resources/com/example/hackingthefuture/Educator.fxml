@@ -48,14 +48,14 @@
             <Image url="file:///C:/HackingTheFuture2.0/HackingTheFuture/src/main/resources/com/example/hackingthefuture/educator-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label layoutX="265.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#26a69a">
+      <Label layoutX="215.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="Welcome!" textFill="#26a69a">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="436.0" layoutY="47.0" prefHeight="51.0" prefWidth="170.0" text="name" textFill="#26a69a">
+      <Label fx:id="nameLabel" alignment="TOP_CENTER" layoutX="385.0" layoutY="47.0" prefHeight="51.0" prefWidth="300.0" text="name" textFill="#26a69a">
          <font>
-            <Font name="System Bold" size="28.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <Button layoutX="635.0" layoutY="140.0" mnemonicParsing="false" onAction="#viewOtherProfile" prefHeight="29.0" prefWidth="36.0" style="-fx-background-color: #b2dfdb;">
