@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fbe9e7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.DisplayQuiz">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #C2B2D2;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hackingthefuture.DisplayQuiz">
    <children>
-      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#ff7043">
+      <Label layoutX="42.0" layoutY="99.0" text="Back" textFill="#7e57c2">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="307.0" layoutY="17.0" prefHeight="58.0" prefWidth="247.0" text="View Quiz" textFill="#ff7043">
+      <Label layoutX="307.0" layoutY="17.0" prefHeight="58.0" prefWidth="247.0" text="View Quiz" textFill="#7e57c2">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
+      <Button layoutX="15.0" layoutY="16.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #C2B2D2;">
          <graphic>
             <ImageView fitHeight="73.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,35 +30,38 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="671.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="106.0" prefWidth="124.0" style="-fx-background-color: #fbe9e7;" />
-      <Label layoutX="733.0" layoutY="96.0" text="Profile" textFill="#ff7043">
+      <TextArea fx:id="display" editable="false" layoutX="129.0" layoutY="120.0" prefHeight="460.0" prefWidth="559.0" style="-fx-background-color: #ede7f6; -fx-background-radius: 50; -fx-border-radius: 20;">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font></TextArea>
+      <ImageView fitHeight="174.0" fitWidth="193.0" layoutX="651.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" rotate="1.3">
+         <image>
+            <Image url="@displayQuiz1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="160.0" fitWidth="158.0" layoutX="-12.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" rotate="-11.3">
+         <image>
+            <Image url="@displayQuiz.png" />
+         </image>
+      </ImageView>
+      <CheckBox fx:id="science" layoutX="140.0" layoutY="85.0" mnemonicParsing="false" style="-fx-background-color: #b39ddb;" text="Science" />
+      <CheckBox fx:id="technology" layoutX="249.0" layoutY="85.0" mnemonicParsing="false" style="-fx-background-color: #b39ddb;" text="Technology" />
+      <CheckBox fx:id="engineering" layoutX="366.0" layoutY="85.0" mnemonicParsing="false" style="-fx-background-color: #b39ddb;" text="Engineering" />
+      <CheckBox fx:id="mathematics" layoutX="487.0" layoutY="85.0" mnemonicParsing="false" style="-fx-background-color: #b39ddb;" text="Mathematics" />
+      <Button layoutX="676.0" mnemonicParsing="false" onAction="#viewProfileBTN" prefHeight="106.0" prefWidth="124.0" style="-fx-background-color: #C2B2D2;">
+         <graphic>
+            <ImageView fitHeight="101.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@profileIcon-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="714.0" layoutY="101.0" text="Profile" textFill="#7e57c2">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <TextArea fx:id="display" editable="false" layoutX="129.0" layoutY="120.0" prefHeight="460.0" prefWidth="559.0">
-         <font>
-            <Font name="Calibri Light" size="20.0" />
-         </font></TextArea>
-      <ImageView fitHeight="174.0" fitWidth="193.0" layoutX="626.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true" rotate="1.3">
-         <image>
-            <Image url="@viewEventPage.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="127.0" fitWidth="184.0" layoutX="-2.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true" rotate="-2.7">
-         <image>
-            <Image url="@viewEventPage(1).png" />
-         </image>
-      </ImageView>
-      <CheckBox fx:id="science" layoutX="118.0" layoutY="85.0" mnemonicParsing="false" text="Science" />
-      <CheckBox fx:id="technology" layoutX="232.0" layoutY="85.0" mnemonicParsing="false" text="Technology" />
-      <CheckBox fx:id="engineering" layoutX="377.0" layoutY="85.0" mnemonicParsing="false" text="Engineering" />
-      <CheckBox fx:id="mathematics" layoutX="510.0" layoutY="85.0" mnemonicParsing="false" text="Mathematics" />
-      <Button layoutX="632.0" layoutY="77.0" mnemonicParsing="false" onAction="#filterQuizzes" prefHeight="36.0" prefWidth="78.0" text="Filter" />
-      <ImageView fitHeight="101.0" fitWidth="102.0" layoutX="706.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@profileIcon-removebg-preview.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="609.0" layoutY="76.0" mnemonicParsing="false" onAction="#filterQuizzes" prefHeight="36.0" prefWidth="78.0" style="-fx-background-color: #b39ddb;" text="Filter" />
    </children>
 </AnchorPane>
