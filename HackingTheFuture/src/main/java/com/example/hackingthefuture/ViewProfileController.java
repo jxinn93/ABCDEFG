@@ -242,9 +242,6 @@ public class ViewProfileController {
         String SPass = "";
 
         Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
         try {
             con = DriverManager.getConnection(SUrl, SUser, SPass);
         } catch (SQLException e) {

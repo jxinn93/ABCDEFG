@@ -103,5 +103,19 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="Discussion" layoutX="690.0" layoutY="136.0" mnemonicParsing="false" onAction="#Discussion" prefHeight="68.0" prefWidth="92.0" style="-fx-background-color: #e0f2f1;">
+         <graphic>
+            <ImageView fitHeight="100.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/chatroom-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="707.0" layoutY="243.0" text="Discussion" textFill="#26a69a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
