@@ -70,7 +70,7 @@ public class ViewEventController {
             eventTF2.setText(getEventString(event2));
             eventTF3.setText(getEventString(event3));
 
-            if(UserClass.getRole().equals("Educator")){
+            if(UserClass.getRole().equals("Educator") || UserClass.getRole().equals("Parent")){
                 System.out.println(UserClass.getRole());
                 registerBTN1.setVisible(false);
                 registerBTN2.setVisible(false);
@@ -99,6 +99,10 @@ public class ViewEventController {
         if(UserClass.getRole().equals("Educator")){
             Node sourceNode = (Node) actionEvent.getSource();
             Function.nextPage("Educator.fxml", sourceNode, "Educator");
+        }
+        else if(UserClass.getRole().equals("Parent")){
+            Node sourceNode = (Node) actionEvent.getSource();
+            Function.nextPage("Parent.fxml", sourceNode, "Parent");
         }
         else {
             Node sourceNode = (Node) actionEvent.getSource();

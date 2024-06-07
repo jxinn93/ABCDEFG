@@ -169,5 +169,21 @@ public class ParentController extends ViewProfileController {
             e.printStackTrace();
         }
     }
+
+    public void viewEventBTN(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ViewEvent.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            ViewEventController viewEventController = fxmlLoader.getController();
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) nameSearchTF.getScene().getWindow();
+            currentStage.close();
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
 

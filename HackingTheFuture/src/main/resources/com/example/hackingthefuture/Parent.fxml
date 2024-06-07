@@ -67,7 +67,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="210.0" layoutY="274.0" mnemonicParsing="false" onAction="#makeBookingBTN" prefHeight="157.0" prefWidth="204.0" style="-fx-background-color: #A0DB8E;" text="Make Booking" textAlignment="CENTER" textFill="#405738">
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="227.0" layoutY="242.0" mnemonicParsing="false" onAction="#makeBookingBTN" prefHeight="157.0" prefWidth="204.0" style="-fx-background-color: #A0DB8E;" text="Make Booking" textAlignment="CENTER" textFill="#405738">
          <graphic>
             <ImageView accessibleRole="BUTTON" fitHeight="125.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -79,11 +79,11 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="494.0" layoutY="274.0" mnemonicParsing="false" onAction="#viewBookingBTN" prefHeight="142.0" prefWidth="204.0" style="-fx-background-color: #A0DB8E;" text="View Booking" textAlignment="CENTER" textFill="#405738">
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="474.0" layoutY="242.0" mnemonicParsing="false" onAction="#viewBookingBTN" prefHeight="142.0" prefWidth="204.0" style="-fx-background-color: #A0DB8E;" text="View Booking" textAlignment="CENTER" textFill="#405738">
          <graphic>
-            <ImageView accessibleRole="BUTTON" fitHeight="125.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView accessibleRole="BUTTON" fitHeight="125.0" fitWidth="172.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@viewEventIcon.png" />
+                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/cat-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
@@ -105,5 +105,17 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" layoutX="342.0" layoutY="416.0" mnemonicParsing="false" onAction="#viewEventBTN" prefHeight="160.0" prefWidth="214.0" style="-fx-background-color: #A0DB8E;" text="View Event" textAlignment="CENTER" textFill="#405738">
+         <graphic>
+            <ImageView fitHeight="125.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@viewEventIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
