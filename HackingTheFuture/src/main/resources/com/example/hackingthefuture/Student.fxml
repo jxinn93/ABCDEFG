@@ -48,16 +48,16 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
-      <Label layoutX="696.0" layoutY="380.0" prefHeight="21.0" prefWidth="92.0" text="Discussion" textFill="#756d7d">
+      <Label layoutX="708.0" layoutY="228.0" prefHeight="21.0" prefWidth="92.0" text="Discussion" textFill="#756d7d">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="Discussion" layoutX="680.0" layoutY="269.0" mnemonicParsing="false" onAction="#Discussion" prefHeight="68.0" prefWidth="92.0" style="-fx-background-color: #C2B2D2;">
+      <Button fx:id="Discussion" layoutX="680.0" layoutY="130.0" mnemonicParsing="false" onAction="#Discussion" prefHeight="68.0" prefWidth="92.0" style="-fx-background-color: #C2B2D2;">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/chatroom-removebg-preview.png" />
+                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/chat2-removebg-preview.png" />
                </image>
             </ImageView>
          </graphic>
@@ -70,11 +70,11 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="notifications" layoutX="691.0" layoutY="140.0" mnemonicParsing="false" onAction="#DisplayN" prefHeight="72.0" prefWidth="86.0" style="-fx-background-color: #C2B2D2;">
+      <Button fx:id="notifications" layoutX="691.0" layoutY="259.0" mnemonicParsing="false" onAction="#DisplayN" prefHeight="72.0" prefWidth="86.0" style="-fx-background-color: #C2B2D2;">
          <graphic>
             <ImageView fitHeight="72.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/mail-removebg-preview.png" />
+                  <Image url="@../../../../../../../../Users/SCSM11/Downloads/mail-removebg-preview%20(1).png" />
                </image>
             </ImageView>
          </graphic>
@@ -112,7 +112,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="693.0" layoutY="228.0" text="Notification" textFill="#756d7d">
+      <Label layoutX="701.0" layoutY="341.0" text="Notification" textFill="#756d7d">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -50,7 +50,7 @@ public class DiscussionController {
 
     public void setDisplay()throws SQLException {
         Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
-        String query = "SELECT username, Content, Date FROM discussion ORDER BY Date DESC";
+        String query = "SELECT username, Content, Date FROM discussion ORDER BY Date ASC";
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
 
