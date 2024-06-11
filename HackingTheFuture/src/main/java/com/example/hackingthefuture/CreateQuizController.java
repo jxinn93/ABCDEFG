@@ -16,6 +16,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateQuizController {
     @FXML
@@ -91,7 +93,10 @@ public class CreateQuizController {
                 Alert.showAlert("Please select a theme!", "Error");
             } else if (quizLinkTF.getText().isEmpty()) {
                 Alert.showAlert("Please upload quiz link!", "Error");
-            } else {
+            } else if (!isValidLink(quizLinkTF.getText())) { // Check if the link format is valid
+                Alert.showAlert("Invalid link format!", "Error");
+            }
+            else {
                 int numberOfQuiz=1;
                 String query = "SELECT * FROM createQuiz WHERE username=?";
                 PreparedStatement ps = con.prepareStatement(query);
@@ -120,6 +125,15 @@ public class CreateQuizController {
             System.out.println(e.getMessage());
         }
     }
+
+    public boolean isValidLink(String link) {
+        // Regular expression to validate link format
+        String regex = "^(http(s)?://)?([\\w-]+\\.)+[\\w-]+(/[\\w- ;,./?%&=]*)?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(link);
+        return matcher.matches();
+    }
+
 
     public void scienceSelected(ActionEvent actionEvent) {
         selectedTheme = "Science";

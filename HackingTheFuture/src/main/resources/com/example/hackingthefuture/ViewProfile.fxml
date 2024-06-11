@@ -24,7 +24,14 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label fx:id="labelF" layoutX="596.0" layoutY="97.0" prefHeight="35.0" prefWidth="127.0" />
+      <Label fx:id="labelF" layoutX="563.0" layoutY="95.0" prefHeight="51.0" prefWidth="134.0">
+         <graphic>
+            <Button fx:id="follow" mnemonicParsing="false" onAction="#CheckFriends" prefHeight="49.0" prefWidth="134.0" style="-fx-background-color: #E5C6A9;" text="ADD FRIEND" textFill="#795548">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </graphic></Label>
       <Button layoutX="6.0" layoutY="4.0" mnemonicParsing="false" onAction="#backBTN" prefHeight="77.0" prefWidth="87.0" style="-fx-background-color: #fbe9e7;">
          <graphic>
             <ImageView fitHeight="67.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
@@ -74,10 +81,5 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="follow" layoutX="563.0" layoutY="95.0" mnemonicParsing="false" onAction="#CheckFriends" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: #E5C6A9;" text="ADD FRIEND" textFill="#795548">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

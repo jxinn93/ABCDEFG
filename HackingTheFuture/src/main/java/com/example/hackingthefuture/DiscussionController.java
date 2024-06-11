@@ -78,7 +78,7 @@ public class DiscussionController {
 
             case "Educator":
                 Node sourceNode = (Node) event.getSource();
-                Function.nextPage("Educator.fxml", sourceNode, "Educatr");
+                Function.nextPage("Educator.fxml", sourceNode, "Educator");
 
                 break;
             case "Parent":

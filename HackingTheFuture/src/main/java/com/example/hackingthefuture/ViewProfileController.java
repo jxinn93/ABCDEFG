@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ViewProfileController {
     public String SUrl = "jdbc:mysql://localhost:3306/hackingthefuture";
     public String SUser = "root";
     public String SPass = "";
+
 
 
     public Connection con;
@@ -110,6 +112,7 @@ public class ViewProfileController {
                     while (rs.next()) {
                         numberOfEvent = rs.getInt("numberOfEvent");
                     }
+
                     System.out.println("Number of events created: " + numberOfEvent);
                     label3.setText("Number of events created: " + numberOfEvent);
 
@@ -125,11 +128,13 @@ public class ViewProfileController {
 
                     label2R.setVisible(false);
                     labelF.setVisible(false);
+
                     break;
 
                 case "Parent":
                     label2R.setVisible(false);
-                    label4.setVisible(false);
+                    label4.setVisible(true);
+                    label4.setText("");
                     String loggedInUsername = UserClass.getUsername();
                     String targetUsername = (profileUsername != null && !profileUsername.isEmpty()) ? profileUsername : loggedInUsername;
 
@@ -158,7 +163,6 @@ public class ViewProfileController {
                     }
                     labelF.setVisible(false);
                     break;
-
                 case "Young Student":
                     int points = 0;
                     query = "SELECT * FROM user WHERE username=?";
@@ -203,6 +207,7 @@ public class ViewProfileController {
             }
         }
     }
+
     public void showFriends (String username){
 
         StringBuilder s = new StringBuilder();
@@ -231,6 +236,8 @@ public class ViewProfileController {
         label4.setText("Friend: " + s.toString());
 
     }
+
+
 
 
     @FXML
