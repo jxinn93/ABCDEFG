@@ -23,8 +23,9 @@ public class Student {
     }
 
     public LocalDateTime getLastUpdatedPoint() {
-        return lastUpdatedPoint;
+        return lastUpdatedPoint != null ? lastUpdatedPoint : LocalDateTime.MIN;
     }
+
 
     @Override
     public String toString() {
